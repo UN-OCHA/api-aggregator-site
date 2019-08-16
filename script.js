@@ -4,8 +4,10 @@
  * Get blocks for : Headlines, HRinfo events, HPC data, HDX datasets, FTS funding by sector, key figures, DSR, HPC?? , RW Figures, CBPF API
  * Show title of the page -- Country + Sector -- Create breadcrumb
  * show images for reports
+ * TODO : LINKS BROKEN // IMAGE BROKEN
+ * 
  */
-var config ={};
+var config = {};
 config.number_items = 3;
 
 /*Aux function*/
@@ -206,9 +208,8 @@ class plotable_object
         this.date = report.fields.date.created;
         this.source = report.fields.source[0].shortname;
         // TODO: only first source
-
         if (report.fields.file)
-            this.image = report.fields.file[0].preview["url-thumb"];
+            this.image = report.fields.file[0].preview["url-thumb"];      
     }
 
     normalize_hdx_dataset(dataset)
@@ -239,6 +240,11 @@ class plotable_object
         card.setAttribute('class', 'standard');
         const h1 = document.createElement('figcaption');
         h1.textContent = this.title;
+
+        const image = document.createElement('image');
+        console.log(this.image);
+        image.setAttribute('src', this.image);
+
         const div = document.createElement('div');
         const p = document.createElement('p');
         const footer = document.createElement('footer');
@@ -248,8 +254,9 @@ class plotable_object
         time.textContent = this.date;
         source_span.textContent = this.source;
         area.appendChild(link);
-        // link.appendChild (image)
         link.appendChild(card);
+        card.appendChild(image);
+
         card.appendChild(h1);
         //card.appendChild(div)
         div.appendChild(p);
