@@ -1,265 +1,264 @@
 <!DOCTYPE html>
-<!-- saved from url=(0038)https://rw.stage.rwdev.org/country/afg -->
+
 <html lang="en" dir="ltr" prefix="fb: http://ogp.me/ns/fb# og: http://ogp.me/ns# article: http://ogp.me/ns/article#" class="js">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <title>API Aggregator demo</title>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <link type="text/css" rel="stylesheet" href="./styles.css" media="screen">
+        <title>API Aggregator demo</title>
 
-<body class="html" screen_capture_injected="true">
-  <div>
-    <!-- Site header -->
-      <!--
-    <header id="header">
-  <h1><a href="https://rw.stage.rwdev.org/"><span class="accessibility">ReliefWeb</span></a></h1>
--->
-  <!-- Help and user menu -->
-      <!--
-  <nav id="global-menu" aria-labelledby="global-menu-title">
-    <h2 id="global-menu-title" class="accessibility">Global Menu</h2>
-    <ul>
+        <link type="text/css" rel="stylesheet" href="./styles.css" media="screen">
+
+    <body class="html" >
+        <div>
+            <!-- Site header -->
+            <!--
+          <header id="header">
+        <h1><a href="https://rw.stage.rwdev.org/"><span class="accessibility">ReliefWeb</span></a></h1>
+            -->
+            <!-- Help and user menu -->
+            <!--
+        <nav id="global-menu" aria-labelledby="global-menu-title">
+          <h2 id="global-menu-title" class="accessibility">Global Menu</h2>
+          <ul>
+                  <li>
+              <a href="https://rw.stage.rwdev.org/help" aria-describedby="hint-help">Help</a>
+              <p id="hint-help" class="accessibility">Find help on how to use the site, read terms and conditions, view the FAQs and API documentation.</p>
+            </li>
+                  <li>
+              <a href="https://rw.stage.rwdev.org/user/login" aria-describedby="hint-login">Log in / Register</a>
+              <p id="hint-login" class="accessibility">Access your account or create a new one for additional features or to post job or training opportunities.</p>
+            </li>
+                </ul>
+        </nav>
+            -->
+
+            <!-- Site Navigation -->
+            <!--
+        <button type="button" id="navigation-menu-toggler" aria-expanded="false" aria-controls="navigation-menu" value="Menu">Menu</button><nav id="navigation-menu" aria-labelledby="navigation-menu-title" data-toggable="Menu" data-hidden="true">
+          <h2 id="navigation-menu-title" class="accessibility">Site Navigation</h2>
+          <ul>
             <li>
-        <a href="https://rw.stage.rwdev.org/help" aria-describedby="hint-help">Help</a>
-        <p id="hint-help" class="accessibility">Find help on how to use the site, read terms and conditions, view the FAQs and API documentation.</p>
-      </li>
+              <a href="https://rw.stage.rwdev.org/updates" aria-describedby="hint-updates">Updates</a>
+              <p id="hint-updates">Latest humanitarian reports, maps and infographics and full document archive.</p>
+            </li>
             <li>
-        <a href="https://rw.stage.rwdev.org/user/login" aria-describedby="hint-login">Log in / Register</a>
-        <p id="hint-login" class="accessibility">Access your account or create a new one for additional features or to post job or training opportunities.</p>
-      </li>
+              <a href="https://rw.stage.rwdev.org/countries" aria-describedby="hint-countries" data-active="">Countries</a>
+              <p id="hint-countries">List of countries covered by ReliefWeb.</p>
+            </li>
+            <li>
+              <a href="https://rw.stage.rwdev.org/disasters" aria-describedby="hint-disasters">Disasters</a>
+              <p id="hint-disasters">List of alerts, ongoing and past disasters covered by ReliefWeb.</p>
+            </li>
+            <li>
+              <a href="https://rw.stage.rwdev.org/organizations" aria-describedby="hint-organizations">Organizations</a>
+              <p id="hint-organizations">List of organizations that are actively providing ReliefWeb with content.</p>
+            </li>
+            <li>
+              <a href="https://rw.stage.rwdev.org/topics" aria-describedby="hint-topics">Topics</a>
+              <p id="hint-topics">Curated pages dedicated to humanitarian themes and specific humanitarian crises.</p>
+            </li>
+            <li>
+              <a href="https://rw.stage.rwdev.org/jobs" aria-describedby="hint-jobs">Jobs</a>
+              <p id="hint-jobs">Open job opportunities in the humanitarian field.</p>
+            </li>
+            <li>
+              <a href="https://rw.stage.rwdev.org/training" aria-describedby="hint-training">Training</a>
+              <p id="hint-training">Open training opportunities in the humanitarian field.</p>
+            </li>
           </ul>
-  </nav>
-  -->
+        </nav>
+            -->
 
-  <!-- Site Navigation -->
-      <!--
-  <button type="button" id="navigation-menu-toggler" aria-expanded="false" aria-controls="navigation-menu" value="Menu">Menu</button><nav id="navigation-menu" aria-labelledby="navigation-menu-title" data-toggable="Menu" data-hidden="true">
-    <h2 id="navigation-menu-title" class="accessibility">Site Navigation</h2>
-    <ul>
-      <li>
-        <a href="https://rw.stage.rwdev.org/updates" aria-describedby="hint-updates">Updates</a>
-        <p id="hint-updates">Latest humanitarian reports, maps and infographics and full document archive.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/countries" aria-describedby="hint-countries" data-active="">Countries</a>
-        <p id="hint-countries">List of countries covered by ReliefWeb.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/disasters" aria-describedby="hint-disasters">Disasters</a>
-        <p id="hint-disasters">List of alerts, ongoing and past disasters covered by ReliefWeb.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/organizations" aria-describedby="hint-organizations">Organizations</a>
-        <p id="hint-organizations">List of organizations that are actively providing ReliefWeb with content.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/topics" aria-describedby="hint-topics">Topics</a>
-        <p id="hint-topics">Curated pages dedicated to humanitarian themes and specific humanitarian crises.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/jobs" aria-describedby="hint-jobs">Jobs</a>
-        <p id="hint-jobs">Open job opportunities in the humanitarian field.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/training" aria-describedby="hint-training">Training</a>
-        <p id="hint-training">Open training opportunities in the humanitarian field.</p>
-      </li>
-    </ul>
-  </nav>
-  -->
+            <!-- Site search form -->
+            <!--
+        <button type="button" id="site-search-toggler" aria-expanded="false" aria-controls="site-search" value="Search">Search</button><section id="site-search" role="search" aria-labelledby="site-search-title" data-toggable="Search" data-focus-target="site-search-input" data-hidden="true">
+          <h2 id="site-search-title" class="accessibility">Content Search</h2>
+          <form action="https://rw.stage.rwdev.org/search/results" method="GET">
+            <label for="site-search-input" class="accessibility">Search ReliefWeb</label>
+            <input type="search" name="search" autocomplete="off" placeholder="What are you looking for?" id="site-search-input">
+            <button type="submit" value="search"><span class="accessibility">Search</span></button>
+          </form>
+        </section>
+            -->
 
-  <!-- Site search form -->
-      <!--
-  <button type="button" id="site-search-toggler" aria-expanded="false" aria-controls="site-search" value="Search">Search</button><section id="site-search" role="search" aria-labelledby="site-search-title" data-toggable="Search" data-focus-target="site-search-input" data-hidden="true">
-    <h2 id="site-search-title" class="accessibility">Content Search</h2>
-    <form action="https://rw.stage.rwdev.org/search/results" method="GET">
-      <label for="site-search-input" class="accessibility">Search ReliefWeb</label>
-      <input type="search" name="search" autocomplete="off" placeholder="What are you looking for?" id="site-search-input">
-      <button type="submit" value="search"><span class="accessibility">Search</span></button>
-    </form>
-  </section>
-  -->
+            <!-- Main page content -->
+            <main id="main">
+                <!-- Local tasks -->
 
-    <!-- Main page content -->
-      <main id="main">
-      <!-- Local tasks -->
+                <!-- Messages -->
 
-<!-- Messages -->
-
-<!-- Pager content -->
-<article >
-  <header>
-    <h2 lang="en">RW Aggregator demo</h2>
-      </header>
-
-  
-  
-    <section id="latest-reports" class="reports-block">
-    <h3>Latest Reports</h3>
-    <footer class="view-more">
-            <a  id="latest-reports-link" >View all </a>
-          </footer>
-    </section>
-
-    <section id="latest-sitreps" class="reports-block">
-    <h3>Latest Situation Reports</h3>
-    <footer class="view-more">
-            <a  id="latest-sitreps-link" >View all </a>
-          </footer>
-    </section>
-
-    <section id="key-content" class="links">
-    <h3>Key Content</h3>
-    <ul>
-              <li><a href="https://rw.stage.rwdev.org/node/2905308">IOM: IOM - Humanitarian Assistance Programme (HAP) Weekly Report (28 November - 4 December 2018)</a></li>
-              <li><a href="https://rw.stage.rwdev.org/node/2907653">UNICEF: UNICEF Afghanistan: Western Region Drought Response Humanitarian Situation Report #3 (15 November 2018)</a></li>
-              <li><a href="https://rw.stage.rwdev.org/node/2908118">UNHCR: Afghan Assisted Return Weekly Update (8 December 2018)</a></li>
-          </ul>
-  </section>
-  
-    <section id="appeals" class="links">
-    <h3>Appeals &amp; Response Plans</h3>
-    <ul>
-              <li><a href="https://rw.stage.rwdev.org/node/2802889">UNICEF: Humanitarian Action for Children 2018 - Afghanistan (Revised July 2018)</a></li>
-              <li><a href="https://rw.stage.rwdev.org/node/2631924">OCHA: Afghanistan: Humanitarian Response Plan (2018 - 2021) - Revised Financial Requirements due to Drought, May 2018</a></li>
-              <li><a href="https://rw.stage.rwdev.org/node/2905008">OCHA: 2019 Afghanistan Humanitarian Needs Overview</a></li>
-          </ul>
-  </section>
-  
-    <section id="useful-links" class="links">
-    <h3>Useful Links</h3>
-    <ul>
-              <li><a href="https://reliefweb.int/report/afghanistan/world-report-2018-afghanistan-events-2017" target="_blank" rel="noopener">HRW World Report 2018 - Afghanistan: Events of 2017</a></li>
-              <li><a href="http://fscluster.org/afghanistan" target="_blank" rel="noopener">Food Security Cluster: Afghanistan</a></li>
-              <li><a href="https://unama.unmissions.org/" target="_blank" rel="noopener">UNAMA (UN Assistance Mission in Afghanistan)</a></li>
-              <li><a href="http://www.redcrescent.af/" target="_blank" rel="noopener">Afghan Red Crescent Society</a></li>
-              <li><a href="http://andma.gov.af/" target="_blank" rel="noopener">Afghanistan National Disaster Management Authority (ANDMA)</a></li>
-              <li><a href="http://reporting.unhcr.org/node/4505" target="_blank" rel="noopener">UNHCR Global Focus</a></li>
-              <li><a href="http://www.unocha.org/afghanistan" target="_blank" rel="noopener">OCHA Afghanistan</a></li>
-              <li><a href="https://www.humanitarianresponse.info/operations/afghanistan" target="_blank" rel="noopener">HR.info Afghanistan</a></li>
-              <li><a href="https://fts.unocha.org/countries/1/summary/2018" target="_blank" rel="noopener">Afghanistan 2018 | Financial Tracking Service</a></li>
-          </ul>
-  </section>
-  
-    <section id="latest-updates" class="links">
-    <h3>Latest Updates</h3>
-    <ul>
-              <li><a href="https://rw.stage.rwdev.org/report/afghanistan/security-council-press-statement-geneva-afghanistan-conference">UN SC: Security Council Press Statement on Geneva Afghanistan Conference</a></li>
-              <li><a href="https://rw.stage.rwdev.org/report/afghanistan/how-secure-afghanistan-s-future">USIP: How to Secure Afghanistan’s Future</a></li>
-              <li><a href="https://rw.stage.rwdev.org/report/world/worldwide-un-family-celebrates-enduring-universal-values-human-rights">UN News: Worldwide UN family celebrates enduring universal values of human rights</a></li>
-              <li><a href="https://rw.stage.rwdev.org/report/world/corpus-de-papiers-sur-les-transferts-mon-taires-et-le-genre-dans-les-contextes">CaLP: Corpus de papiers sur les transferts monétaires et le genre dans les contextes humanitaires</a></li>
-              <li><a href="https://rw.stage.rwdev.org/report/world/humanitarian-cash-transfer-programming-and-gender-based-violence-outcomes-evidence-and">IRC: Humanitarian Cash Transfer Programming and Gender-based Violence Outcomes: Evidence and Future Research Priorities</a></li>
-          </ul>
-    <footer class="view-more">
-      <a href="https://rw.stage.rwdev.org/updates?search=country.exact%3A%22Afghanistan%22">View all updates</a>
-    </footer>
-  </section>
-  </article>
+                <!-- Pager content -->
+                <article >
+                    <header>
+                        <h2 lang="en">RW Aggregator demo</h2>
+                    </header>
 
 
 
-                    <aside id="theme-links">
-                        <dl>
-                                                    <h1>Theme links</h1>
-                            <a onclick="refresh_page(this)"  id=""><dt >All</dt></a>
+                    <section id="latest-reports" class="reports-block">
+                        <h3>Latest Reports</h3>
+                        <footer class="view-more">
+                            <a  id="latest-reports-link" >View all </a>
+                        </footer>
+                    </section>
 
-                            <a onclick="refresh_page(this)"  id="4604"><dt >WASH</dt></a>
-                            <a onclick="refresh_page(this)"  id="4603"><dt >Shelter/NFI</dt></a>
-                        </dl>
-                    </aside>
+                    <section id="latest-sitreps" class="reports-block">
+                        <h3>Latest Situation Reports</h3>
+                        <footer class="view-more">
+                            <a  id="latest-sitreps-link" >View all </a>
+                        </footer>
+                    </section>
 
+                    <section id="key-content" class="links">
+                        <h3>Key Content</h3>
+                        <ul>
+                            <li><a href="https://rw.stage.rwdev.org/node/2905308">IOM: IOM - Humanitarian Assistance Programme (HAP) Weekly Report (28 November - 4 December 2018)</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/node/2907653">UNICEF: UNICEF Afghanistan: Western Region Drought Response Humanitarian Situation Report #3 (15 November 2018)</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/node/2908118">UNHCR: Afghan Assisted Return Weekly Update (8 December 2018)</a></li>
+                        </ul>
+                    </section>
 
-    </main>
+                    <section id="appeals" class="links">
+                        <h3>Appeals &amp; Response Plans</h3>
+                        <ul>
+                            <li><a href="https://rw.stage.rwdev.org/node/2802889">UNICEF: Humanitarian Action for Children 2018 - Afghanistan (Revised July 2018)</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/node/2631924">OCHA: Afghanistan: Humanitarian Response Plan (2018 - 2021) - Revised Financial Requirements due to Drought, May 2018</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/node/2905008">OCHA: 2019 Afghanistan Humanitarian Needs Overview</a></li>
+                        </ul>
+                    </section>
 
-    <!-- Site footer -->
-    <footer id="footer">
-  <!-- Additional Links -->
-  <section id="additional-links" aria-labelledby="additional-links">
-    <h2 id="additional-links-title" class="accessibility">Additional links</h2>
-    <ul>
-      <li>
-        <a href="https://rw.stage.rwdev.org/blog" aria-describedby="hint-blog">Blog</a>
-        <p id="hint-blog" class="accessibility">ReliefWeb's blog</p>
-      </li>
-      <li>
-        <a href="https://labs.reliefweb.int/" aria-describedby="hint-labs">Labs</a>
-        <p id="hint-labs" class="accessibility">ReliefWeb Labs projects explore new and emerging opportunities to improve information delivery to humanitarians.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/about" aria-describedby="hint-about">About Us</a>
-        <p id="hint-about" class="accessibility">Learn more about ReliefWeb, leading online source for reliable and timely humanitarian information on global crises and disasters since 1996.</p>
-      </li>
-      <li>
-        <a href="https://rw.stage.rwdev.org/terms-conditions" aria-describedby="hint-terms-conditions">Terms</a>
-        <p id="hint-terms-conditions" class="accessibility">ReliefWeb's terms &amp; Conditions.</p>
-      </li>
-    </ul>
-  </section>
+                    <section id="useful-links" class="links">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li><a href="https://reliefweb.int/report/afghanistan/world-report-2018-afghanistan-events-2017" target="_blank" rel="noopener">HRW World Report 2018 - Afghanistan: Events of 2017</a></li>
+                            <li><a href="http://fscluster.org/afghanistan" target="_blank" rel="noopener">Food Security Cluster: Afghanistan</a></li>
+                            <li><a href="https://unama.unmissions.org/" target="_blank" rel="noopener">UNAMA (UN Assistance Mission in Afghanistan)</a></li>
+                            <li><a href="http://www.redcrescent.af/" target="_blank" rel="noopener">Afghan Red Crescent Society</a></li>
+                            <li><a href="http://andma.gov.af/" target="_blank" rel="noopener">Afghanistan National Disaster Management Authority (ANDMA)</a></li>
+                            <li><a href="http://reporting.unhcr.org/node/4505" target="_blank" rel="noopener">UNHCR Global Focus</a></li>
+                            <li><a href="http://www.unocha.org/afghanistan" target="_blank" rel="noopener">OCHA Afghanistan</a></li>
+                            <li><a href="https://www.humanitarianresponse.info/operations/afghanistan" target="_blank" rel="noopener">HR.info Afghanistan</a></li>
+                            <li><a href="https://fts.unocha.org/countries/1/summary/2018" target="_blank" rel="noopener">Afghanistan 2018 | Financial Tracking Service</a></li>
+                        </ul>
+                    </section>
 
-  <!-- Social media -->
-  <section id="social-media" aria-labelledby="social-media-title">
-    <h2 id="social-media-title" class="accessibility">Social media</h2>
-    <ul>
-      <li><a href="https://www.facebook.com/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on Facebook</span></a></li>
-      <li><a href="https://twitter.com/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on Twitter</span></a></li>
-      <li><a href="https://www.linkedin.com/company/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on LinkedIn</span></a></li>
-    </ul>
-  </section>
-
-  <!-- Other OCHA services -->
-  <button type="button" id="ocha-services-toggler" aria-expanded="false" aria-controls="ocha-services" value="OCHA Services">OCHA Services</button><section id="ocha-services" aria-labelledby="ocha-services-title" data-toggable="OCHA Services" data-hidden="true">
-    <h2 id="ocha-services-title" class="accessibility">OCHA Services</h2>
-    <ul>
-      <li>
-        <div id="ocha-services-related-platforms">Related Platforms</div>
-        <ul aria-labelledby="ocha-services-data">
-          <li><a href="https://www.agendaforhumanity.org/" target="_blank" rel="noopener">Agenda for Humanity</a></li>
-          <li><a href="https://cerf.un.org/" target="_blank" rel="noopener">Central Emergency Response Fund</a></li>
-          <li><a href="https://redhum.org/" target="_blank" rel="noopener">Redhum</a></li>
-        </ul>
-      </li>
-      <li>
-        <div id="ocha-services-others">Other OCHA Services</div>
-        <ul aria-labelledby="ocha-services-finances">
-          <li><a href="https://fts.unocha.org/" target="_blank" rel="noopener">Financial Tracking Service</a></li>
-          <li><a href="https://data.humdata.org/" target="_blank" rel="noopener">Humanitarian Data Exchange</a></li>
-          <li><a href="https://humanitarian.id/" target="_blank" rel="noopener">Humanitarian ID</a></li>
-          <li><a href="https://humanitarianresponse.info/" target="_blank" rel="noopener">Humanitarian Response</a></li>
-        </ul>
-      </li>
-      <li>
-        <div id="ocha-services-others-continuation" class="accessibility">Other OCHA Services</div>
-        <ul aria-labelledby="ocha-services-others-continuation">
-          <li><a href="https://interagencystandingcommittee.org/" target="_blank" rel="noopener">Inter-Agency Standing Committee</a></li>
-          <li><a href="https://unocha.org/" target="_blank" rel="noopener">OCHA website</a></li>
-          <li><a href="https://vosocc.unocha.org/" target="_blank" rel="noopener">Virtual OSOCC</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="https://www.unocha.org/ocha-digital-services" target="_blank" rel="noopener">See All<span class="accessibility"> OCHA services</span></a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- OCHA Disclaimer -->
-  <div id="ocha-disclaimer">
-    <p>Service provided by<span id="ocha-logo"><span class="accessibility">UN OCHA</span></span></p>
-    <p>OCHA coordinates the global emergency response to save lives and protect people in humanitarian crises. We advocate for effective and principled humanitarian action by all, for all.</p>
-  </div>
-
-  <!-- Copyright -->
-  <div id="copyright">
-    <p><a href="https://reliefweb.int/terms-conditions"><span class="accessibility">ReliefWeb's Terms &amp; Conditions.</span></a></p>
-    <p>© 2019 all rights reserved.</p>
-  </div>
-</footer>
-
-    <!-- Additional scripts -->
-    <script type="text/javascript" src="./additional_js.js"></script>
-  </div>
+                    <section id="latest-updates" class="links">
+                        <h3>Latest Updates</h3>
+                        <ul>
+                            <li><a href="https://rw.stage.rwdev.org/report/afghanistan/security-council-press-statement-geneva-afghanistan-conference">UN SC: Security Council Press Statement on Geneva Afghanistan Conference</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/report/afghanistan/how-secure-afghanistan-s-future">USIP: How to Secure Afghanistan’s Future</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/report/world/worldwide-un-family-celebrates-enduring-universal-values-human-rights">UN News: Worldwide UN family celebrates enduring universal values of human rights</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/report/world/corpus-de-papiers-sur-les-transferts-mon-taires-et-le-genre-dans-les-contextes">CaLP: Corpus de papiers sur les transferts monétaires et le genre dans les contextes humanitaires</a></li>
+                            <li><a href="https://rw.stage.rwdev.org/report/world/humanitarian-cash-transfer-programming-and-gender-based-violence-outcomes-evidence-and">IRC: Humanitarian Cash Transfer Programming and Gender-based Violence Outcomes: Evidence and Future Research Priorities</a></li>
+                        </ul>
+                        <footer class="view-more">
+                            <a href="https://rw.stage.rwdev.org/updates?search=country.exact%3A%22Afghanistan%22">View all updates</a>
+                        </footer>
+                    </section>
+                </article>
 
 
-</body>
-      <script type="text/javascript"  src="script.js"></script>
+
+                <aside id="theme-links">
+                    <dl>
+                        <h1>Theme links</h1>                        
+
+                        <a onclick="refresh_page(this)"  id="4604"><dt >WASH</dt></a>
+                        <a onclick="refresh_page(this)"  id="4603"><dt >Shelter/NFI</dt></a>
+                    </dl>
+                </aside>
+
+
+            </main>
+
+            <!-- Site footer -->
+            <footer id="footer">
+                <!-- Additional Links -->
+                <section id="additional-links" aria-labelledby="additional-links">
+                    <h2 id="additional-links-title" class="accessibility">Additional links</h2>
+                    <ul>
+                        <li>
+                            <a href="https://rw.stage.rwdev.org/blog" aria-describedby="hint-blog">Blog</a>
+                            <p id="hint-blog" class="accessibility">ReliefWeb's blog</p>
+                        </li>
+                        <li>
+                            <a href="https://labs.reliefweb.int/" aria-describedby="hint-labs">Labs</a>
+                            <p id="hint-labs" class="accessibility">ReliefWeb Labs projects explore new and emerging opportunities to improve information delivery to humanitarians.</p>
+                        </li>
+                        <li>
+                            <a href="https://rw.stage.rwdev.org/about" aria-describedby="hint-about">About Us</a>
+                            <p id="hint-about" class="accessibility">Learn more about ReliefWeb, leading online source for reliable and timely humanitarian information on global crises and disasters since 1996.</p>
+                        </li>
+                        <li>
+                            <a href="https://rw.stage.rwdev.org/terms-conditions" aria-describedby="hint-terms-conditions">Terms</a>
+                            <p id="hint-terms-conditions" class="accessibility">ReliefWeb's terms &amp; Conditions.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Social media -->
+                <section id="social-media" aria-labelledby="social-media-title">
+                    <h2 id="social-media-title" class="accessibility">Social media</h2>
+                    <ul>
+                        <li><a href="https://www.facebook.com/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on Facebook</span></a></li>
+                        <li><a href="https://twitter.com/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on Twitter</span></a></li>
+                        <li><a href="https://www.linkedin.com/company/reliefweb" target="_blank" rel="noopener"><span class="accessibility">ReliefWeb on LinkedIn</span></a></li>
+                    </ul>
+                </section>
+
+                <!-- Other OCHA services -->
+                <button type="button" id="ocha-services-toggler" aria-expanded="false" aria-controls="ocha-services" value="OCHA Services">OCHA Services</button><section id="ocha-services" aria-labelledby="ocha-services-title" data-toggable="OCHA Services" data-hidden="true">
+                    <h2 id="ocha-services-title" class="accessibility">OCHA Services</h2>
+                    <ul>
+                        <li>
+                            <div id="ocha-services-related-platforms">Related Platforms</div>
+                            <ul aria-labelledby="ocha-services-data">
+                                <li><a href="https://www.agendaforhumanity.org/" target="_blank" rel="noopener">Agenda for Humanity</a></li>
+                                <li><a href="https://cerf.un.org/" target="_blank" rel="noopener">Central Emergency Response Fund</a></li>
+                                <li><a href="https://redhum.org/" target="_blank" rel="noopener">Redhum</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div id="ocha-services-others">Other OCHA Services</div>
+                            <ul aria-labelledby="ocha-services-finances">
+                                <li><a href="https://fts.unocha.org/" target="_blank" rel="noopener">Financial Tracking Service</a></li>
+                                <li><a href="https://data.humdata.org/" target="_blank" rel="noopener">Humanitarian Data Exchange</a></li>
+                                <li><a href="https://humanitarian.id/" target="_blank" rel="noopener">Humanitarian ID</a></li>
+                                <li><a href="https://humanitarianresponse.info/" target="_blank" rel="noopener">Humanitarian Response</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div id="ocha-services-others-continuation" class="accessibility">Other OCHA Services</div>
+                            <ul aria-labelledby="ocha-services-others-continuation">
+                                <li><a href="https://interagencystandingcommittee.org/" target="_blank" rel="noopener">Inter-Agency Standing Committee</a></li>
+                                <li><a href="https://unocha.org/" target="_blank" rel="noopener">OCHA website</a></li>
+                                <li><a href="https://vosocc.unocha.org/" target="_blank" rel="noopener">Virtual OSOCC</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://www.unocha.org/ocha-digital-services" target="_blank" rel="noopener">See All<span class="accessibility"> OCHA services</span></a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- OCHA Disclaimer -->
+                <div id="ocha-disclaimer">
+                    <p>Service provided by<span id="ocha-logo"><span class="accessibility">UN OCHA</span></span></p>
+                    <p>OCHA coordinates the global emergency response to save lives and protect people in humanitarian crises. We advocate for effective and principled humanitarian action by all, for all.</p>
+                </div>
+
+                <!-- Copyright -->
+                <div id="copyright">
+                    <p><a href="https://reliefweb.int/terms-conditions"><span class="accessibility">ReliefWeb's Terms &amp; Conditions.</span></a></p>
+                    <p>© 2019 all rights reserved.</p>
+                </div>
+            </footer>
+
+            <!-- Additional scripts -->
+            <script type="text/javascript" src="./additional_js.js"></script>
+        </div>
+
+
+    </body>
+    <script type="text/javascript"  src="script.js"></script>
 
 </html>
