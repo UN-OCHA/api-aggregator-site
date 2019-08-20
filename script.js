@@ -2,13 +2,13 @@
  * TODO: Put theme in the URL
  * TODO: Cluster menu created automatically based on RW taxonomy
  * Get blocks for : Headlines, HRinfo events, HPC data, HDX datasets, FTS funding by sector, key figures, DSR, HPC?? , RW Figures, CBPF API
- * Show title of the page -- Country + Sector -- Create breadcrumb
- * show images for reports
- * TODO : LINKS BROKEN // IMAGE BROKEN
+ * Create breadcrumb
  * 
  */
 var config = {};
 config.number_items = 3;
+var theme = null;
+var country_iso3 = null;
 /*Aux function*/
 function getUrlVars() {
     var vars = {};
@@ -19,7 +19,6 @@ function getUrlVars() {
 }
 
 /* mapping tables */
-
 const country_table = {
     abw: {hrinfo_id: "193", fullname: "Aruba", shortname: "Aruba"},
     afg: {hrinfo_id: "181", fullname: "Afghanistan", shortname: "Afghanistan"},
@@ -665,7 +664,7 @@ function refresh_page(element_clicked) {
         theme = element_clicked.id;
     else
         theme = null;
-    var country_iso3 = getUrlVars()["country"];
+    country_iso3 = getUrlVars()["country"];
 
     /* Plot the title */
     title_block = document.getElementById("main_title");
@@ -683,7 +682,6 @@ function refresh_page(element_clicked) {
     const element_countries = "countries";
     const element_countries_more = null;
     sendRequest(call_url, null, element_countries, element_countries_more, plotCountryMenu);
-    console.log(country_table)
 
     /** Reliefweb - All reports */
     call_url = query_object.reliefweb_allreports_url;
@@ -708,6 +706,12 @@ function refresh_page(element_clicked) {
     const element_events = "hrinfo-events";
     const element_events_more = "hrinfo-events-link";
     sendRequest(call_url, "Next HRinfo events", element_events, element_events_more, plotHRinfoEvents);
+
+    /* Reliefweb figures */
+    call_url = "https://raw.githubusercontent.com/reliefweb/crisis-app-data/v2/edition/hdx/main.json";
+    const element_figures = "reliefweb-figures";
+    const element_figures_more = "reliefweb-figures-link";
+    sendRequest(call_url, "reliefweb Figures", element_figures, element_figures_more, plotRWFigures);
 
 }
 
@@ -756,6 +760,7 @@ class plotable_object
         this.date = "";
         this.url = "";
         this.source = "";
+        this.value = "";
     }
 
     normalize_hrinfo_event(event) {
@@ -816,6 +821,15 @@ class plotable_object
         // TODO: only first source
     }
 
+    normalize_rw_figure(figure)
+    {
+        this.link = figure.url;
+        this.title = figure.name;
+        this.value = figure.value;
+        this.date = figure.date;
+        this.source = figure.source;
+    }
+
     plot(element) {
         var area = document.getElementById(element);
         const link = document.createElement('a');
@@ -828,6 +842,7 @@ class plotable_object
         h1.textContent = this.title;
         const div = document.createElement('div');
         const p = document.createElement('p');
+        p.innerText = this.value;
         const footer = document.createElement('footer');
         const time = document.createElement('time');
         const source = document.createElement('cite');
@@ -836,8 +851,9 @@ class plotable_object
         source_span.textContent = this.source;
         area.appendChild(link);
         link.appendChild(card);
+
         card.appendChild(h1);
-        //card.appendChild(div)
+        card.appendChild(div);
         if (this.image) {
             const image = document.createElement('img');
             image.setAttribute('src', this.image);
@@ -850,7 +866,6 @@ class plotable_object
         source.appendChild(source_span);
     }
 }
-
 
 function plotHRinfoEvents(data, api_url, title, element) {
     plotHeader(element, title);
@@ -915,6 +930,38 @@ function plotRWReports(data, api_url, title, element) {
     }
     );
     plotFooter(element, api_url);
+}
+
+function plotRWFigures(data, api_url, title, element) {
+
+    var found = data.find(function (element) {
+        return (element.iso3.toLowerCase() === country_iso3);
+    });
+    if (found) {
+        data = found.figures;
+
+        // order figures by date
+        function compare(a, b) {
+            if (a.date < b.date) {
+                return 1;
+            }
+            if (a.date > b.date) {
+                return -1;
+            }
+            return 0;
+        }
+        data.sort(compare);
+
+        plotHeader(element, title);
+        for (i = 0; i < config.number_items; i++) {
+            figure = data[i];
+            plot_dataset = new plotable_object();
+            plot_dataset.normalize_rw_figure(figure);
+            plot_dataset.plot(element);
+        }
+        ;
+        plotFooter(element, api_url);
+    }
 }
 
 /* MAIN CALL */
