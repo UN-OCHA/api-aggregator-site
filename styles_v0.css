@@ -26,7 +26,7 @@ html {
 
 body {
     position: relative;
-    max-width: 1400px;
+    /*max-width: 1400px;*/
     width: 100%;
     overflow-x: hidden;
     padding: 0;
@@ -116,6 +116,46 @@ code {
     padding: 2px;
 }
 
+.sidenav {
+  height: 100%;
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  float:left;
+}
+
+.sidenav a {
+  padding: 0px 6px 0px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  display: block;
+}
+
+.sidenav a figure {
+  margin: 0px 0px 0px 0px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 14px;}
+}
+
+
+
 figure {
     margin: 24px 0 12px 0;
 }
@@ -177,9 +217,9 @@ a[href="#main"].accessibility:focus {
 @media screen and (min-width :1236px) {
     body>div {
         position: relative;
-        left: 50%;
-        margin-left: -700px;
-        max-width: 1400px;
+        /*left: 50%;*/
+        /*margin-left: -700px;*/
+        /*max-width: 1400px;*/
     }
 }
 
@@ -959,15 +999,24 @@ table th.active a {
 
 #main {
     padding: 0 12px;
-    clear: both;
+    float:right;
+  /*  clear: both;*/
     padding-top: 32px;
     padding-bottom: 32px;
-    font-size: 16px;
+    font-size: 12px;
     letter-spacing: 0.2px;
     color: #2e3436;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
+  /*margin-left: 160px; *//* Same as the width of the sidenav */
+    margin-top: 15px; /* Same as the width of the sidenav */
+
+  padding: 0px 10px;
+  width:80%;
+  display:block;
+
+
 }
 
 #main:after {
@@ -977,8 +1026,18 @@ table th.active a {
     width: 100%;
 }
 
+#main h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eb1405;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
 #main h2 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     margin: 0 0 16px 0;
     padding-bottom: 8px;
@@ -988,27 +1047,27 @@ table th.active a {
 }
 
 #main h3 {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 24px;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
 
 #main h4 {
-    font-size: 17px;
+    font-size: 13px;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
 
 #main h5 {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     font-style: italic;
     letter-spacing: 0.5px;
 }
 
 #main h6 {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
@@ -1018,7 +1077,7 @@ table th.active a {
     padding: 0 10px 10px 0;
     margin: 10px 0 16px 0;
     float:left;
-    width:25%;
+    width:250px;
 
 }
 
@@ -1287,7 +1346,7 @@ table th.active a {
 }
 
 #main>aside {
-    width: 100%;
+    width: 200px;
     margin-top: 24px;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -2131,7 +2190,7 @@ table th.active a {
 
 #main #digital-sitrep figure figcaption {
     margin-top: 4px;
-    font-size: 15px;
+    font-size: 14px;
     font-style: italic;
 }
 
@@ -2162,38 +2221,32 @@ table th.active a {
 
 #main .reports-block img {
     border: 1px solid #e6ecef;
-    border-radius: 5px;
-    margin: 0 0 20px 0;
-    padding: 20px;
+    /*border-radius: 5px;*/
+    margin: 0 0 0px 0;
+    /*padding: 20px;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
 }
 
 #main .reports-block figure figcaption {
-    font-size: 17px;
+    font-size: 12px;
     font-weight: bold;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
 }
 
-#main .reports-block figure image {
-    clear: both;
-    fill: none;
-    float:right;
-    opacity: 0.5;
-    overflow: visible;
-    padding: 10px 0;
-    stroke: #2e3436;
-    stroke-width: 2px;
-    width: 120px;
-}
 
 #main .reports-block figure p {
     display: inline-block;
-    margin: 0 12px 0 0;
+    margin: 0 10px 0 0;
     vertical-align: middle;
 }
 
 #main .reports-block figure data {
     display: block;
-    font-size: 22px;
+    font-size: 10px;
     font-weight: bold;
     color: #055372;
 }
@@ -2201,7 +2254,7 @@ table th.active a {
 #main .reports-block figure small {
     display: block;
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 10px;
     line-height: 1.5;
     font-style: normal;
 }
@@ -2220,7 +2273,7 @@ table th.active a {
 #main .reports-block figure footer {
     clear: both;
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 10px;
 }
 
 #main .reports-block figure time {
@@ -2600,7 +2653,7 @@ table th.active a {
 
 @media screen and (min-width :768px) {
     #main {
-        width: 100%;
+        width: 85%;
     }
     #main>article {
         float: left;
@@ -2610,7 +2663,6 @@ table th.active a {
         float: right;
         width: 25%;
         margin: 0;
-        border-left: 24px solid white;
     }
     #main>article.about,
     #main>article.country {
@@ -2680,15 +2732,15 @@ table th.active a {
 
 @media screen and (min-width :1200px) and (max-width :1235px) {
     #main {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 
 @media screen and (min-width :1236px) {
     #main {
-        padding-left: 130px;
-        padding-right: 130px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 

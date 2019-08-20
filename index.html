@@ -7,8 +7,12 @@
 
         <link type="text/css" rel="stylesheet" href="./styles_v0.css" media="screen">
 
-    <body class="html" >
+    <body >
         <div>
+
+            <div class="sidenav" id="countries" >
+
+            </div>
             <!-- Site header -->
             <!--
           <header id="header">
@@ -81,15 +85,15 @@
             -->
 
             <!-- Main page content -->
-            <main id="main">
+            <main id="main" class="html" >
                 <!-- Local tasks -->
 
                 <!-- Messages -->
 
                 <!-- Pager content -->
-                                    <header>
-                        <h1 lang="en">API Aggregator Demo</h1>
-                    </header>
+                <header>
+                    <h1 id="main_title" lang="en">API Aggregator Demo</h1>
+                </header>
 
                 <article >
 
@@ -122,21 +126,22 @@
                     </section>
 
 
+                    <!--
+                                        <section id="key-content" class="links">
+                                            <h3>Key Content</h3>
+                                            <ul>
+                                                <li><a href="https://rw.stage.rwdev.org/node/2905308">IOM: IOM - Humanitarian Assistance Programme (HAP) Weekly Report (28 November - 4 December 2018)</a></li>
+                                                <li><a href="https://rw.stage.rwdev.org/node/2907653">UNICEF: UNICEF Afghanistan: Western Region Drought Response Humanitarian Situation Report #3 (15 November 2018)</a></li>
+                                                <li><a href="https://rw.stage.rwdev.org/node/2908118">UNHCR: Afghan Assisted Return Weekly Update (8 December 2018)</a></li>
+                                            </ul>
+                                        </section>
+                    -->
 
-                    <section id="key-content" class="links">
-                        <h3>Key Content</h3>
-                        <ul>
-                            <li><a href="https://rw.stage.rwdev.org/node/2905308">IOM: IOM - Humanitarian Assistance Programme (HAP) Weekly Report (28 November - 4 December 2018)</a></li>
-                            <li><a href="https://rw.stage.rwdev.org/node/2907653">UNICEF: UNICEF Afghanistan: Western Region Drought Response Humanitarian Situation Report #3 (15 November 2018)</a></li>
-                            <li><a href="https://rw.stage.rwdev.org/node/2908118">UNHCR: Afghan Assisted Return Weekly Update (8 December 2018)</a></li>
-                        </ul>
-                    </section>
+                    <div>
 
-                         <div>
-                 
-                        
+
                     </div>
-                    
+
                 </article>
 
                 <article>
@@ -144,15 +149,16 @@
 
 
 
-                        
+
                     </div>
-                    
+
                 </article>
 
                 <aside id="theme-links">
                     <dl>
-                        <h1>Theme links</h1>                        
+                        <h2>Theme/Cluster</h2>                        
 
+                        <a onclick="refresh_page(this)"  id=""><dt >All</dt></a>
                         <a onclick="refresh_page(this)"  id="WSH"><dt >WASH</dt></a>
                         <a onclick="refresh_page(this)"  id="SHL"><dt >Shelter/NFI</dt></a>
                         <a onclick="refresh_page(this)"  id="COO"><dt >Coordination</dt></a>
@@ -174,22 +180,24 @@
             </main>
 
             <!-- Site footer -->
+            <!--
             <footer id="footer">
 
         
 
-                <!-- OCHA Disclaimer -->
-                <div id="ocha-disclaimer">
-                    <p>Service provided by<span id="ocha-logo"><span class="accessibility">UN OCHA</span></span></p>
-                    <p>OCHA coordinates the global emergency response to save lives and protect people in humanitarian crises. We advocate for effective and principled humanitarian action by all, for all.</p>
-                </div>
+            <!-- OCHA Disclaimer ->
+            <div id="ocha-disclaimer">
+                <p>Service provided by<span id="ocha-logo"><span class="accessibility">UN OCHA</span></span></p>
+                <p>OCHA coordinates the global emergency response to save lives and protect people in humanitarian crises. We advocate for effective and principled humanitarian action by all, for all.</p>
+            </div>
 
-                <!-- Copyright -->
-                <div id="copyright">
-                    <p><a href="https://reliefweb.int/terms-conditions"><span class="accessibility">ReliefWeb's Terms &amp; Conditions.</span></a></p>
-                    <p>© 2019 all rights reserved.</p>
-                </div>
-            </footer>
+            <!-- Copyright ->
+            <div id="copyright">
+                <p><a href="https://reliefweb.int/terms-conditions"><span class="accessibility">ReliefWeb's Terms &amp; Conditions.</span></a></p>
+                <p>© 2019 all rights reserved.</p>
+            </div>
+        </footer>
+            -->
 
             <!-- Additional scripts -->
             <script type="text/javascript" src="./additional_js.js"></script>
