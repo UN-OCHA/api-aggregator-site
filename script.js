@@ -774,7 +774,7 @@ class plotable_object
     normalize_country(country) {
         if (country.iso3) {
             this.link = "?country=" + country.iso3.toLowerCase();
-            this.title = country.label["english-short"];
+            this.title = country.label["english-short"]; 
         }
     }
 
