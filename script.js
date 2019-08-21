@@ -3,7 +3,9 @@
  * TODO: Cluster menu created automatically based on RW taxonomy
  * Get blocks for : Headlines, HRinfo events, HPC data, HDX datasets, FTS funding by sector, key figures, DSR, HPC?? , RW Figures, CBPF API
  * Create breadcrumb
- * 
+ * TODO: DATES FORMATTING
+ *  
+ *  
  */
 var config = {};
 config.number_items = 3;
@@ -21,138 +23,138 @@ function getUrlVars() {
 /* mapping tables */
 const country_table = {
     // TODO: To fix HRINFO ID
-//    abw: {hrinfo_id: "193", fullname: "Aruba", shortname: "Aruba"},
-    afg: {hrinfo_id: "82", fullname: "Afghanistan", shortname: "Afghanistan"}, // right HRINFO
-//    ago: {hrinfo_id: "187", fullname: "Angola", shortname: "Angola"},
-//    aia: {hrinfo_id: "188", fullname: "Anguilla", shortname: "Anguilla"},
-    //  ala: {hrinfo_id: "182", fullname: "Åland Islands", shortname: "Aland Islands"},
-    // alb: {hrinfo_id: "183", fullname: "Albania", shortname: "Albania"},
-    //and: {hrinfo_id: "186", fullname: "Andorra", shortname: "Andorra"},
-    //are: {hrinfo_id: "415", fullname: "United Arab Emirates", shortname: "United Arab Emirates"},
-    //arg: {hrinfo_id: "191", fullname: "Argentina", shortname: "Argentina"},
-    //arm: {hrinfo_id: "192", fullname: "Armenia", shortname: "Armenia"},
-    //  asm: {hrinfo_id: "185", fullname: "American Samoa", shortname: "American Samoa"},
-    //  ata: {hrinfo_id: "189", fullname: "Antarctica", shortname: "Antarctica"},
-    //  atf: {hrinfo_id: "259", fullname: "French Southern and Antarctic Territories", shortname: "French Southern Territories"},
-    //  atg: {hrinfo_id: "190", fullname: "Antigua and Barbuda", shortname: "Antigua and Barbuda"},
-    //  aus: {hrinfo_id: "194", fullname: "Australia", shortname: "Australia"},
-    //  aut: {hrinfo_id: "195", fullname: "Austria", shortname: "Austria"},
-    //  aze: {hrinfo_id: "196", fullname: "Azerbaijan", shortname: "Azerbaijan"},
-    bdi: {hrinfo_id: "62", fullname: "Burundi", shortname: "Burundi"},
-    //  bel: {hrinfo_id: "202", fullname: "Belgium", shortname: "Belgium"},
-    //  ben: {hrinfo_id: "204", fullname: "Benin", shortname: "Benin"},
-    //  bes: {hrinfo_id: "209", fullname: "Bonaire, Sint Eustatius and Saba", shortname: "Bosnia and Herzegovina"},
-    bfa: {hrinfo_id: "27", fullname: "Burkina Faso", shortname: "Burkina Faso"},
-    bgd: {hrinfo_id: "2784", fullname: "Bangladesh", shortname: "Bangladesh"},
-    //  bgr: {hrinfo_id: "215", fullname: "Bulgaria", shortname: "Bulgaria"},
-    // bhr: {hrinfo_id: "198", fullname: "Bahrain", shortname: "Bahrain"},
-    //bhs: {hrinfo_id: "197", fullname: "Bahamas", shortname: "Bahamas"},
-    // bih: {hrinfo_id: "208", fullname: "Bosnia and Herzegovina", shortname: "Bonaire, Saint Eustatius and Saba"},
-    // blm: {hrinfo_id: "366", fullname: "Saint Barthélemy", shortname: "St. Barths"},
-//    blr: {hrinfo_id: "201", fullname: "Belarus", shortname: "Belarus"},
-//    blz: {hrinfo_id: "203", fullname: "Belize", shortname: "Belize"},
-//    bmu: {hrinfo_id: "205", fullname: "Bermuda", shortname: "Bermuda"},
-//    bol: {hrinfo_id: "207", fullname: "Bolivia (Plurinational State of)", shortname: "Bolivia"},
-//    bra: {hrinfo_id: "212", fullname: "Brazil", shortname: "Brazil"},
-    //brb: {hrinfo_id: "200", fullname: "Barbados", shortname: "Barbados"},
-    //brn: {hrinfo_id: "214", fullname: "Brunei Darussalam", shortname: "Brunei Darussalam"},
-//    btn: {hrinfo_id: "206", fullname: "Bhutan", shortname: "Bhutan"},
-//    bvt: {hrinfo_id: "211", fullname: "Bouvet Island", shortname: "Bouvet Island"},
-    //bwa: {hrinfo_id: "210", fullname: "Botswana", shortname: "Botswana"},
-    caf: {hrinfo_id: "39", fullname: "Central African Republic", shortname: "Central African Republic"},
-//    can: {hrinfo_id: "220", fullname: "Canada", shortname: "Canada"},
-//    cck: {hrinfo_id: "228", fullname: "Cocos (Keeling) Islands", shortname: "Cocos (Keeling) Islands"},
-  //  che: {hrinfo_id: "397", fullname: "Switzerland", shortname: "Switzerland"},
-//    chl: {hrinfo_id: "225", fullname: "Chile", shortname: "Channel Islands"},
-//    chn: {hrinfo_id: "226", fullname: "China", shortname: "Chile"},
-    //civ: {hrinfo_id: "235", fullname: "Côte d'Ivoire", shortname: "Cote d'Ivoire"},
-    cmr: {hrinfo_id: "28", fullname: "Cameroon", shortname: "Cameroon"},
-    cod: {hrinfo_id: "40", fullname: "Democratic Republic of the Congo", shortname: "DR Congo"},
-//    cog: {hrinfo_id: "231", fullname: "Congo", shortname: "Congo Republic"},
-    //cok: {hrinfo_id: "233", fullname: "Cook Islands", shortname: "Cook Islands"},
-    col: {hrinfo_id: "77", fullname: "Colombia", shortname: "Colombia"},
-    //com: {hrinfo_id: "230", fullname: "Comoros", shortname: "Comoros"},
-//    cpv: {hrinfo_id: "221", fullname: "Cabo Verde", shortname: "Cabo Verde"},
-//    cri: {hrinfo_id: "234", fullname: "Costa Rica", shortname: "Costa Rica"},
-    //cub: {hrinfo_id: "237", fullname: "Cuba", shortname: "Cuba"},
-    //cuw: {hrinfo_id: "238", fullname: "Curaçao", shortname: "Curacao"},
-    //cxr: {hrinfo_id: "227", fullname: "Christmas Island", shortname: "Christmas Island"},
-    //cym: {hrinfo_id: "222", fullname: "Cayman Islands", shortname: "Cayman Islands"},
-    //cyp: {hrinfo_id: "239", fullname: "Cyprus", shortname: "Cyprus"},
-    //cze: {hrinfo_id: "240", fullname: "Czechia", shortname: "Czech Republic"},
-    //deu: {hrinfo_id: "263", fullname: "Germany", shortname: "Germany"},
-    //dji: {hrinfo_id: "242", fullname: "Djibouti", shortname: "Djibouti"},
-//    dma: {hrinfo_id: "243", fullname: "Dominica", shortname: "Dominica"},
-//    dnk: {hrinfo_id: "241", fullname: "Denmark", shortname: "Denmark"},
-//    dom: {hrinfo_id: "244", fullname: "Dominican Republic", shortname: "Dominican Republic"},
-//    dza: {hrinfo_id: "184", fullname: "Algeria", shortname: "Algeria"},
-//    ecu: {hrinfo_id: "245", fullname: "Ecuador", shortname: "Ecuador"},
-//    egy: {hrinfo_id: "246", fullname: "Egypt", shortname: "Egypt"},
-    eri: {hrinfo_id: "64", fullname: "Eritrea", shortname: "Eritrea"},
-//    esh: {hrinfo_id: "427", fullname: "Western Sahara", shortname: "Western Sahara"},
-//    esp: {hrinfo_id: "389", fullname: "Spain", shortname: "Spain"},
-//    est: {hrinfo_id: "250", fullname: "Estonia", shortname: "Estonia"},
-    eth: {hrinfo_id: "251", fullname: "Ethiopia", shortname: "Ethiopia"},
-//    fin: {hrinfo_id: "65", fullname: "Finland", shortname: "Finland"},
-//    fji: {hrinfo_id: "254", fullname: "Fiji", shortname: "Fiji"},
-//    flk: {hrinfo_id: "252", fullname: "Falkland Islands (Malvinas)", shortname: "Falkland Islands"},
-//    fra: {hrinfo_id: "256", fullname: "France", shortname: "France"},
-//    fro: {hrinfo_id: "253", fullname: "Faroe Islands", shortname: "Faeroe Islands"},
-//    fsm: {hrinfo_id: "325", fullname: "Micronesia (Federated States of)", shortname: "Micronesia, Fed. Sts."},
-//    gab: {hrinfo_id: "260", fullname: "Gabon", shortname: "Gabon"},
-//    gbr: {hrinfo_id: "416", fullname: "United Kingdom of Great Britain and Northern Ireland", shortname: "United Kingdom"},
-//    geo: {hrinfo_id: "262", fullname: "Georgia", shortname: "Georgia"},
-//    ggy: {hrinfo_id: "272", fullname: "Guernsey", shortname: "Guernsey"},
-//    gha: {hrinfo_id: "264", fullname: "Ghana", shortname: "Ghana"},
-//    gib: {hrinfo_id: "265", fullname: "Gibraltar", shortname: "Gibraltar"},
-//    gin: {hrinfo_id: "273", fullname: "Guinea", shortname: "Guinea"},
-//    glp: {hrinfo_id: "269", fullname: "Guadeloupe", shortname: "Guadeloupe"},
-//    gmb: {hrinfo_id: "261", fullname: "Gambia", shortname: "Gambia"},
-//    gnb: {hrinfo_id: "274", fullname: "Guinea-Bissau", shortname: "Guinea-Bissau"},
-//    gnq: {hrinfo_id: "248", fullname: "Equatorial Guinea", shortname: "Equatorial Guinea"},
-//    grc: {hrinfo_id: "266", fullname: "Greece", shortname: "Greece"},
-//    grd: {hrinfo_id: "268", fullname: "Grenada", shortname: "Grenada"},
-//    grl: {hrinfo_id: "267", fullname: "Greenland", shortname: "Greenland"},
-//    gtm: {hrinfo_id: "271", fullname: "Guatemala", shortname: "Guatemala"},
-//    guf: {hrinfo_id: "257", fullname: "French Guiana", shortname: "French Guiana"},
-//    gum: {hrinfo_id: "270", fullname: "Guam", shortname: "Guam"},
-//    guy: {hrinfo_id: "275", fullname: "Guyana", shortname: "Guyana"},
-//    hkg: {hrinfo_id: "280", fullname: "China, Hong Kong Special Administrative Region", shortname: "Hong Kong"},
-//    hmd: {hrinfo_id: "277", fullname: "Heard Island and McDonald Islands", shortname: "Heard and McDonald Islands"},
-//    hnd: {hrinfo_id: "279", fullname: "Honduras", shortname: "Honduras"},
-//    hrv: {hrinfo_id: "236", fullname: "Croatia", shortname: "Croatia"},
-    hti: {hrinfo_id: "78", fullname: "Haiti", shortname: "Haiti"},
-//    hun: {hrinfo_id: "281", fullname: "Hungary", shortname: "Hungary"},
-    idn: {hrinfo_id: "83", fullname: "Indonesia", shortname: "Indonesia"},
-//    imn: {hrinfo_id: "288", fullname: "Isle of Man", shortname: "Isle of Man"},
-//    ind: {hrinfo_id: "283", fullname: "India", shortname: "India"},
-//    iot: {hrinfo_id: "213", fullname: "British Indian Ocean Territory", shortname: "British Indian Ocean Territory"},
-//    irl: {hrinfo_id: "287", fullname: "Ireland", shortname: "Ireland"},
-//    irn: {hrinfo_id: "285", fullname: "Iran (Islamic Republic of)", shortname: "Iran"},
-    irq: {hrinfo_id: "2793", fullname: "Iraq", shortname: "Iraq"},
-//    isl: {hrinfo_id: "282", fullname: "Iceland", shortname: "Iceland"},
-    //isr: {hrinfo_id: "289", fullname: "Israel", shortname: "Israel"},
-//    ita: {hrinfo_id: "290", fullname: "Italy", shortname: "Italy"},
-    //jam: {hrinfo_id: "291", fullname: "Jamaica", shortname: "Jamaica"},
-//    jey: {hrinfo_id: "293", fullname: "Jersey", shortname: "Jersey"},
-//    jor: {hrinfo_id: "294", fullname: "Jordan", shortname: "Jordan"},
-//    jpn: {hrinfo_id: "292", fullname: "Japan", shortname: "Japan"},
-//    kaz: {hrinfo_id: "295", fullname: "Kazakhstan", shortname: "Kazakhstan"},
-//    ken: {hrinfo_id: "296", fullname: "Kenya", shortname: "Kenya"},
-    kgz: {hrinfo_id: "2781", fullname: "Kyrgyzstan", shortname: "Kyrgyz Republic"},
-    khm: {hrinfo_id: "2783", fullname: "Cambodia", shortname: "Cambodia"},
-    //kir: {hrinfo_id: "297", fullname: "Kiribati", shortname: "Kiribati"},
-//    kna: {hrinfo_id: "368", fullname: "Saint Kitts and Nevis", shortname: "St. Kitts and Nevis"},
+    abw: {hrinfo_id: "193", fullname: "Aruba", shortname: "Aruba"},
+    afg: {hrinfo_id: "82", fullname: "Afghanistan", shortname: "Afghanistan", hrinfo_op: true}, // right HRINFO
+    ago: {hrinfo_id: "187", fullname: "Angola", shortname: "Angola"},
+    aia: {hrinfo_id: "188", fullname: "Anguilla", shortname: "Anguilla"},
+    ala: {hrinfo_id: "182", fullname: "ï¿½land Islands", shortname: "Aland Islands"},
+    alb: {hrinfo_id: "183", fullname: "Albania", shortname: "Albania"},
+    and: {hrinfo_id: "186", fullname: "Andorra", shortname: "Andorra"},
+    are: {hrinfo_id: "415", fullname: "United Arab Emirates", shortname: "United Arab Emirates"},
+    arg: {hrinfo_id: "191", fullname: "Argentina", shortname: "Argentina"},
+    arm: {hrinfo_id: "192", fullname: "Armenia", shortname: "Armenia"},
+    asm: {hrinfo_id: "185", fullname: "American Samoa", shortname: "American Samoa"},
+    ata: {hrinfo_id: "189", fullname: "Antarctica", shortname: "Antarctica"},
+    atf: {hrinfo_id: "259", fullname: "French Southern and Antarctic Territories", shortname: "French Southern Territories"},
+    atg: {hrinfo_id: "190", fullname: "Antigua and Barbuda", shortname: "Antigua and Barbuda"},
+    aus: {hrinfo_id: "194", fullname: "Australia", shortname: "Australia"},
+    aut: {hrinfo_id: "195", fullname: "Austria", shortname: "Austria"},
+    aze: {hrinfo_id: "196", fullname: "Azerbaijan", shortname: "Azerbaijan"},
+    bdi: {hrinfo_id: "62", fullname: "Burundi", shortname: "Burundi", hrinfo_op: true},
+    bel: {hrinfo_id: "202", fullname: "Belgium", shortname: "Belgium"},
+    ben: {hrinfo_id: "204", fullname: "Benin", shortname: "Benin"},
+    bes: {hrinfo_id: "209", fullname: "Bonaire, Sint Eustatius and Saba", shortname: "Bosnia and Herzegovina"},
+    bfa: {hrinfo_id: "27", fullname: "Burkina Faso", shortname: "Burkina Faso", hrinfo_op: true},
+    bgd: {hrinfo_id: "2784", fullname: "Bangladesh", shortname: "Bangladesh", hrinfo_op: true},
+    bgr: {hrinfo_id: "215", fullname: "Bulgaria", shortname: "Bulgaria"},
+    bhr: {hrinfo_id: "198", fullname: "Bahrain", shortname: "Bahrain"},
+    bhs: {hrinfo_id: "197", fullname: "Bahamas", shortname: "Bahamas"},
+    bih: {hrinfo_id: "208", fullname: "Bosnia and Herzegovina", shortname: "Bonaire, Saint Eustatius and Saba"},
+    blm: {hrinfo_id: "366", fullname: "Saint Barthï¿½lemy", shortname: "St. Barths"},
+    blr: {hrinfo_id: "201", fullname: "Belarus", shortname: "Belarus"},
+    blz: {hrinfo_id: "203", fullname: "Belize", shortname: "Belize"},
+    bmu: {hrinfo_id: "205", fullname: "Bermuda", shortname: "Bermuda"},
+    bol: {hrinfo_id: "207", fullname: "Bolivia (Plurinational State of)", shortname: "Bolivia"},
+    bra: {hrinfo_id: "212", fullname: "Brazil", shortname: "Brazil"},
+    brb: {hrinfo_id: "200", fullname: "Barbados", shortname: "Barbados"},
+    brn: {hrinfo_id: "214", fullname: "Brunei Darussalam", shortname: "Brunei Darussalam"},
+    btn: {hrinfo_id: "206", fullname: "Bhutan", shortname: "Bhutan"},
+    bvt: {hrinfo_id: "211", fullname: "Bouvet Island", shortname: "Bouvet Island"},
+    bwa: {hrinfo_id: "210", fullname: "Botswana", shortname: "Botswana"},
+    caf: {hrinfo_id: "39", fullname: "Central African Republic", shortname: "Central African Republic", hrinfo_op: true},
+    can: {hrinfo_id: "220", fullname: "Canada", shortname: "Canada"},
+    cck: {hrinfo_id: "228", fullname: "Cocos (Keeling) Islands", shortname: "Cocos (Keeling) Islands"},
+    che: {hrinfo_id: "397", fullname: "Switzerland", shortname: "Switzerland"},
+    chl: {hrinfo_id: "225", fullname: "Chile", shortname: "Channel Islands"},
+    chn: {hrinfo_id: "226", fullname: "China", shortname: "Chile"},
+    civ: {hrinfo_id: "235", fullname: "Cï¿½te d'Ivoire", shortname: "Cote d'Ivoire"},
+    cmr: {hrinfo_id: "28", fullname: "Cameroon", shortname: "Cameroon", hrinfo_op: true},
+    cod: {hrinfo_id: "40", fullname: "Democratic Republic of the Congo", shortname: "DR Congo", hrinfo_op: true},
+    cog: {hrinfo_id: "231", fullname: "Congo", shortname: "Congo Republic"},
+    cok: {hrinfo_id: "233", fullname: "Cook Islands", shortname: "Cook Islands"},
+    col: {hrinfo_id: "77", fullname: "Colombia", shortname: "Colombia", hrinfo_op: true},
+    com: {hrinfo_id: "230", fullname: "Comoros", shortname: "Comoros"},
+    cpv: {hrinfo_id: "221", fullname: "Cabo Verde", shortname: "Cabo Verde"},
+    cri: {hrinfo_id: "234", fullname: "Costa Rica", shortname: "Costa Rica"},
+    cub: {hrinfo_id: "237", fullname: "Cuba", shortname: "Cuba"},
+    cuw: {hrinfo_id: "238", fullname: "Curaï¿½ao", shortname: "Curacao"},
+    cxr: {hrinfo_id: "227", fullname: "Christmas Island", shortname: "Christmas Island"},
+    cym: {hrinfo_id: "222", fullname: "Cayman Islands", shortname: "Cayman Islands"},
+    cyp: {hrinfo_id: "239", fullname: "Cyprus", shortname: "Cyprus"},
+    cze: {hrinfo_id: "240", fullname: "Czechia", shortname: "Czech Republic"},
+    deu: {hrinfo_id: "263", fullname: "Germany", shortname: "Germany"},
+    dji: {hrinfo_id: "242", fullname: "Djibouti", shortname: "Djibouti"},
+    dma: {hrinfo_id: "243", fullname: "Dominica", shortname: "Dominica"},
+    dnk: {hrinfo_id: "241", fullname: "Denmark", shortname: "Denmark"},
+    dom: {hrinfo_id: "244", fullname: "Dominican Republic", shortname: "Dominican Republic"},
+    dza: {hrinfo_id: "184", fullname: "Algeria", shortname: "Algeria"},
+    ecu: {hrinfo_id: "245", fullname: "Ecuador", shortname: "Ecuador"},
+    egy: {hrinfo_id: "246", fullname: "Egypt", shortname: "Egypt"},
+    eri: {hrinfo_id: "64", fullname: "Eritrea", shortname: "Eritrea", hrinfo_op: true},
+    esh: {hrinfo_id: "427", fullname: "Western Sahara", shortname: "Western Sahara"},
+    esp: {hrinfo_id: "389", fullname: "Spain", shortname: "Spain"},
+    est: {hrinfo_id: "250", fullname: "Estonia", shortname: "Estonia"},
+    eth: {hrinfo_id: "251", fullname: "Ethiopia", shortname: "Ethiopia", hrinfo_op: true},
+    fin: {hrinfo_id: "65", fullname: "Finland", shortname: "Finland"},
+    fji: {hrinfo_id: "254", fullname: "Fiji", shortname: "Fiji"},
+    flk: {hrinfo_id: "252", fullname: "Falkland Islands (Malvinas)", shortname: "Falkland Islands"},
+    fra: {hrinfo_id: "256", fullname: "France", shortname: "France"},
+    fro: {hrinfo_id: "253", fullname: "Faroe Islands", shortname: "Faeroe Islands"},
+    fsm: {hrinfo_id: "325", fullname: "Micronesia (Federated States of)", shortname: "Micronesia, Fed. Sts."},
+    gab: {hrinfo_id: "260", fullname: "Gabon", shortname: "Gabon"},
+    gbr: {hrinfo_id: "416", fullname: "United Kingdom of Great Britain and Northern Ireland", shortname: "United Kingdom"},
+    geo: {hrinfo_id: "262", fullname: "Georgia", shortname: "Georgia"},
+    ggy: {hrinfo_id: "272", fullname: "Guernsey", shortname: "Guernsey"},
+    gha: {hrinfo_id: "264", fullname: "Ghana", shortname: "Ghana"},
+    gib: {hrinfo_id: "265", fullname: "Gibraltar", shortname: "Gibraltar"},
+    gin: {hrinfo_id: "273", fullname: "Guinea", shortname: "Guinea"},
+    glp: {hrinfo_id: "269", fullname: "Guadeloupe", shortname: "Guadeloupe"},
+    gmb: {hrinfo_id: "261", fullname: "Gambia", shortname: "Gambia"},
+    gnb: {hrinfo_id: "274", fullname: "Guinea-Bissau", shortname: "Guinea-Bissau"},
+    gnq: {hrinfo_id: "248", fullname: "Equatorial Guinea", shortname: "Equatorial Guinea"},
+    grc: {hrinfo_id: "266", fullname: "Greece", shortname: "Greece"},
+    grd: {hrinfo_id: "268", fullname: "Grenada", shortname: "Grenada"},
+    grl: {hrinfo_id: "267", fullname: "Greenland", shortname: "Greenland"},
+    gtm: {hrinfo_id: "271", fullname: "Guatemala", shortname: "Guatemala"},
+    guf: {hrinfo_id: "257", fullname: "French Guiana", shortname: "French Guiana"},
+    gum: {hrinfo_id: "270", fullname: "Guam", shortname: "Guam"},
+    guy: {hrinfo_id: "275", fullname: "Guyana", shortname: "Guyana"},
+    hkg: {hrinfo_id: "280", fullname: "China, Hong Kong Special Administrative Region", shortname: "Hong Kong"},
+    hmd: {hrinfo_id: "277", fullname: "Heard Island and McDonald Islands", shortname: "Heard and McDonald Islands"},
+    hnd: {hrinfo_id: "279", fullname: "Honduras", shortname: "Honduras"},
+    hrv: {hrinfo_id: "236", fullname: "Croatia", shortname: "Croatia"},
+    hti: {hrinfo_id: "78", fullname: "Haiti", shortname: "Haiti", hrinfo_op: true},
+    hun: {hrinfo_id: "281", fullname: "Hungary", shortname: "Hungary"},
+    idn: {hrinfo_id: "83", fullname: "Indonesia", shortname: "Indonesia", hrinfo_op: true},
+    imn: {hrinfo_id: "288", fullname: "Isle of Man", shortname: "Isle of Man"},
+    ind: {hrinfo_id: "283", fullname: "India", shortname: "India"},
+    iot: {hrinfo_id: "213", fullname: "British Indian Ocean Territory", shortname: "British Indian Ocean Territory"},
+    irl: {hrinfo_id: "287", fullname: "Ireland", shortname: "Ireland"},
+    irn: {hrinfo_id: "285", fullname: "Iran (Islamic Republic of)", shortname: "Iran"},
+    irq: {hrinfo_id: "2793", fullname: "Iraq", shortname: "Iraq", hrinfo_op: true},
+    isl: {hrinfo_id: "282", fullname: "Iceland", shortname: "Iceland"},
+    isr: {hrinfo_id: "289", fullname: "Israel", shortname: "Israel"},
+    ita: {hrinfo_id: "290", fullname: "Italy", shortname: "Italy"},
+    jam: {hrinfo_id: "291", fullname: "Jamaica", shortname: "Jamaica"},
+    jey: {hrinfo_id: "293", fullname: "Jersey", shortname: "Jersey"},
+    jor: {hrinfo_id: "294", fullname: "Jordan", shortname: "Jordan"},
+    jpn: {hrinfo_id: "292", fullname: "Japan", shortname: "Japan"},
+    kaz: {hrinfo_id: "295", fullname: "Kazakhstan", shortname: "Kazakhstan"},
+    ken: {hrinfo_id: "296", fullname: "Kenya", shortname: "Kenya"},
+    kgz: {hrinfo_id: "2781", fullname: "Kyrgyzstan", shortname: "Kyrgyz Republic", hrinfo_op: true},
+    khm: {hrinfo_id: "2783", fullname: "Cambodia", shortname: "Cambodia", hrinfo_op: true},
+    kir: {hrinfo_id: "297", fullname: "Kiribati", shortname: "Kiribati"},
+    kna: {hrinfo_id: "368", fullname: "Saint Kitts and Nevis", shortname: "St. Kitts and Nevis"},
     kor: {hrinfo_id: "299", fullname: "Republic of Korea", shortname: "South Korea"},
     kwt: {hrinfo_id: "300", fullname: "Kuwait", shortname: "Kuwait"},
     lao: {hrinfo_id: "302", fullname: "Lao People's Democratic Republic", shortname: "Laos"},
     lbn: {hrinfo_id: "304", fullname: "Lebanon", shortname: "Lebanon"},
     lbr: {hrinfo_id: "306", fullname: "Liberia", shortname: "Liberia"},
-    lby: {hrinfo_id: "2794", fullname: "Libya", shortname: "Libya"},
+    lby: {hrinfo_id: "2794", fullname: "Libya", shortname: "Libya", hrinfo_op: true},
     lca: {hrinfo_id: "369", fullname: "Saint Lucia", shortname: "St. Lucia"},
     lie: {hrinfo_id: "308", fullname: "Liechtenstein", shortname: "Liechtenstein"},
     lka: {hrinfo_id: "390", fullname: "Sri Lanka", shortname: "Sri Lanka"},
-    lso: {hrinfo_id: "49", fullname: "Lesotho", shortname: "Lesotho"},
+    lso: {hrinfo_id: "49", fullname: "Lesotho", shortname: "Lesotho", hrinfo_op: true},
     ltu: {hrinfo_id: "309", fullname: "Lithuania", shortname: "Lithuania"},
     lux: {hrinfo_id: "310", fullname: "Luxembourg", shortname: "Luxembourg"},
     lva: {hrinfo_id: "303", fullname: "Latvia", shortname: "Latvia"},
@@ -166,25 +168,25 @@ const country_table = {
     mex: {hrinfo_id: "324", fullname: "Mexico", shortname: "Mexico"},
     mhl: {hrinfo_id: "319", fullname: "Marshall Islands", shortname: "Marshall Islands"},
     mkd: {hrinfo_id: "312", fullname: "Republic of North Macedonia", shortname: "Macedonia"},
-    mli: {hrinfo_id: "35", fullname: "Mali", shortname: "Mali"},
+    mli: {hrinfo_id: "35", fullname: "Mali", shortname: "Mali", hrinfo_op: true},
     mlt: {hrinfo_id: "318", fullname: "Malta", shortname: "Malta"},
-    mmr: {hrinfo_id: "86", fullname: "Myanmar", shortname: "Myanmar"},
+    mmr: {hrinfo_id: "86", fullname: "Myanmar", shortname: "Myanmar", hrinfo_op: true},
     mne: {hrinfo_id: "329", fullname: "Montenegro", shortname: "Montenegro"},
     mng: {hrinfo_id: "328", fullname: "Mongolia", shortname: "Mongolia"},
     mnp: {hrinfo_id: "346", fullname: "Northern Mariana Islands", shortname: "Northern Mariana Islands"},
-    moz: {hrinfo_id: "53", fullname: "Mozambique", shortname: "Mozambique"},
+    moz: {hrinfo_id: "53", fullname: "Mozambique", shortname: "Mozambique", hrinfo_op: true},
     mrt: {hrinfo_id: "321", fullname: "Mauritania", shortname: "Mauritania"},
     msr: {hrinfo_id: "330", fullname: "Montserrat", shortname: "Montserrat"},
     mtq: {hrinfo_id: "320", fullname: "Martinique", shortname: "Martinique"},
     mus: {hrinfo_id: "322", fullname: "Mauritius", shortname: "Mauritius"},
-    mwi: {hrinfo_id: "51", fullname: "Malawi", shortname: "Malawi"},
+    mwi: {hrinfo_id: "51", fullname: "Malawi", shortname: "Malawi", hrinfo_op: true},
     mys: {hrinfo_id: "315", fullname: "Malaysia", shortname: "Malaysia"},
     myt: {hrinfo_id: "323", fullname: "Mayotte", shortname: "Mayotte"},
     nam: {hrinfo_id: "334", fullname: "Namibia", shortname: "Namibia"},
     ncl: {hrinfo_id: "339", fullname: "New Caledonia", shortname: "New Caledonia"},
-    ner: {hrinfo_id: "37", fullname: "Niger", shortname: "Niger"},
+    ner: {hrinfo_id: "37", fullname: "Niger", shortname: "Niger", hrinfo_op: true},
     nfk: {hrinfo_id: "345", fullname: "Norfolk Island", shortname: "Norfolk Island"},
-    nga: {hrinfo_id: "38", fullname: "Nigeria", shortname: "Nigeria"},
+    nga: {hrinfo_id: "38", fullname: "Nigeria", shortname: "Nigeria", hrinfo_op: true},
     nic: {hrinfo_id: "341", fullname: "Nicaragua", shortname: "Nicaragua"},
     niu: {hrinfo_id: "344", fullname: "Niue", shortname: "Niue"},
     nld: {hrinfo_id: "337", fullname: "Netherlands", shortname: "Netherlands"},
@@ -193,28 +195,28 @@ const country_table = {
     nru: {hrinfo_id: "335", fullname: "Nauru", shortname: "Nauru"},
     nzl: {hrinfo_id: "340", fullname: "New Zealand", shortname: "New Zealand"},
     omn: {hrinfo_id: "348", fullname: "Oman", shortname: "Oman"},
-    pak: {hrinfo_id: "81", fullname: "Pakistan", shortname: "Pakistan"},
+    pak: {hrinfo_id: "81", fullname: "Pakistan", shortname: "Pakistan", hrinfo_op: true},
     pan: {hrinfo_id: "352", fullname: "Panama", shortname: "Panama"},
     pcn: {hrinfo_id: "357", fullname: "Pitcairn", shortname: "Pitcairn"},
     per: {hrinfo_id: "355", fullname: "Peru", shortname: "Peru"},
-    phl: {hrinfo_id: "84", fullname: "Philippines", shortname: "Philippines"},
-    plw: {hrinfo_id: "350", fullname: "Palau", shortname: "Palau"},
-    png: {hrinfo_id: "17395", fullname: "Papua New Guinea", shortname: "Papua New Guinea"},
+    phl: {hrinfo_id: "84", fullname: "Philippines", shortname: "Philippines", hrinfo_op: true},
+    plw: {hrinfo_id: "350", fullname: "Palau", shortname: "Palau", hrinfo_op: true},
+    png: {hrinfo_id: "17395", fullname: "Papua New Guinea", shortname: "Papua New Guinea", hrinfo_op: true},
     pol: {hrinfo_id: "358", fullname: "Poland", shortname: "Poland"},
     pri: {hrinfo_id: "360", fullname: "Puerto Rico", shortname: "Puerto Rico"},
     prk: {hrinfo_id: "298", fullname: "Democratic People's Republic of Korea", shortname: "North Korea"},
     prt: {hrinfo_id: "359", fullname: "Portugal", shortname: "Portugal"},
     pry: {hrinfo_id: "354", fullname: "Paraguay", shortname: "Paraguay"},
-    pse: {hrinfo_id: "73", fullname: "State of Palestine", shortname: "Palestine"},
+    pse: {hrinfo_id: "73", fullname: "State of Palestine", shortname: "Palestine", hrinfo_op: true},
     pyf: {hrinfo_id: "258", fullname: "French Polynesia", shortname: "French Polynesia"},
     qat: {hrinfo_id: "361", fullname: "Qatar", shortname: "Qatar"},
-    reu: {hrinfo_id: "362", fullname: "Réunion", shortname: "Reunion"},
+    reu: {hrinfo_id: "362", fullname: "Rï¿½union", shortname: "Reunion"},
     rou: {hrinfo_id: "363", fullname: "Romania", shortname: "Romania"},
     rus: {hrinfo_id: "364", fullname: "Russian Federation", shortname: "Russia"},
     rwa: {hrinfo_id: "365", fullname: "Rwanda", shortname: "Rwanda"},
     sau: {hrinfo_id: "376", fullname: "Saudi Arabia", shortname: "Saudi Arabia"},
     sdn: {hrinfo_id: "392", fullname: "Sudan", shortname: "Sudan"},
-    sen: {hrinfo_id: "70", fullname: "Senegal", shortname: "Senegal"},
+    sen: {hrinfo_id: "70", fullname: "Senegal", shortname: "Senegal", hrinfo_op: true},
     sgp: {hrinfo_id: "381", fullname: "Singapore", shortname: "Singapore"},
     sgs: {hrinfo_id: "388", fullname: "South Georgia and the South Sandwich Islands", shortname: "South Georgia and South Sandwich Islands"},
     shn: {hrinfo_id: "367", fullname: "Saint Helena", shortname: "St. Helena"},
@@ -223,10 +225,10 @@ const country_table = {
     sle: {hrinfo_id: "380", fullname: "Sierra Leone", shortname: "Sierra Leone"},
     slv: {hrinfo_id: "247", fullname: "El Salvador", shortname: "El Salvador"},
     smr: {hrinfo_id: "374", fullname: "San Marino", shortname: "San Marino"},
-    som: {hrinfo_id: "68", fullname: "Somalia", shortname: "Somalia"},
+    som: {hrinfo_id: "68", fullname: "Somalia", shortname: "Somalia", hrinfo_op: true},
     spm: {hrinfo_id: "371", fullname: "Saint Pierre and Miquelon", shortname: "St. Pierre and Miquelon"},
     srb: {hrinfo_id: "378", fullname: "Serbia", shortname: "Serbia"},
-    ssd: {hrinfo_id: "69", fullname: "South Sudan", shortname: "South Sudan"},
+    ssd: {hrinfo_id: "69", fullname: "South Sudan", shortname: "South Sudan", hrinfo_op: true},
     stp: {hrinfo_id: "375", fullname: "Sao Tome and Principe", shortname: "Sao Tome and Principe"},
     sur: {hrinfo_id: "393", fullname: "Suriname", shortname: "Suriname"},
     svk: {hrinfo_id: "383", fullname: "Slovakia", shortname: "Slovakia"},
@@ -235,9 +237,9 @@ const country_table = {
     swz: {hrinfo_id: "395", fullname: "Kingdom of Eswatini", shortname: "Eswatini"},
     sxm: {hrinfo_id: "382", fullname: "Sint Maarten (Dutch part)", shortname: "Sint Maarten"},
     syc: {hrinfo_id: "379", fullname: "Seychelles", shortname: "Seychelles"},
-    syr: {hrinfo_id: "74", fullname: "Syrian Arab Republic", shortname: "Syria"},
+    syr: {hrinfo_id: "74", fullname: "Syrian Arab Republic", shortname: "Syria", hrinfo_op: true},
     tca: {hrinfo_id: "411", fullname: "Turks and Caicos Islands", shortname: "Turks and Caicos Islands"},
-    tcd: {hrinfo_id: "43", fullname: "Chad", shortname: "Chad"},
+    tcd: {hrinfo_id: "43", fullname: "Chad", shortname: "Chad", hrinfo_op: true},
     tgo: {hrinfo_id: "404", fullname: "Togo", shortname: "Togo"},
     tha: {hrinfo_id: "402", fullname: "Thailand", shortname: "Thailand"},
     tjk: {hrinfo_id: "400", fullname: "Tajikistan", shortname: "Tajikistan"},
@@ -252,7 +254,7 @@ const country_table = {
     twn: {hrinfo_id: "399", fullname: "Taiwan (Province of China)", shortname: "Taiwan"},
     tza: {hrinfo_id: "401", fullname: "United Republic of Tanzania", shortname: "Tanzania"},
     uga: {hrinfo_id: "413", fullname: "Uganda", shortname: "Uganda"},
-    ukr: {hrinfo_id: "43184", fullname: "Ukraine", shortname: "Ukraine"},
+    ukr: {hrinfo_id: "43184", fullname: "Ukraine", shortname: "Ukraine"}, hrinfo_op: true,
     umi: {hrinfo_id: "418", fullname: "United States Minor Outlying Islands (the)", shortname: "United States Minor Outlying Islands"},
     ury: {hrinfo_id: "419", fullname: "Uruguay", shortname: "Uruguay"},
     usa: {hrinfo_id: "417", fullname: "United States of America", shortname: "United States"},
@@ -266,10 +268,10 @@ const country_table = {
     vut: {hrinfo_id: "421", fullname: "Vanuatu", shortname: "Vanuatu"},
     wlf: {hrinfo_id: "426", fullname: "Wallis and Futuna Islands", shortname: "Wallis and Futuna Islands"},
     wsm: {hrinfo_id: "373", fullname: "Samoa", shortname: "Samoa"},
-    yem: {hrinfo_id: "75", fullname: "Yemen", shortname: "Yemen"},
+    yem: {hrinfo_id: "75", fullname: "Yemen", shortname: "Yemen", hrinfo_op: true},
     zaf: {hrinfo_id: "387", fullname: "South Africa", shortname: "South Africa"},
     zmb: {hrinfo_id: "429", fullname: "Zambia", shortname: "Zambia"},
-    zwe: {hrinfo_id: "60", fullname: "Zimbabwe", shortname: "Zimbabwe"}
+    zwe: {hrinfo_id: "60", fullname: "Zimbabwe", shortname: "Zimbabwe", hrinfo_op: true}
 };
 // It fill automatically later
 
@@ -366,8 +368,8 @@ const theme_table = {
             "child nutrition",
             "chronique malnutrition",
             "desnutricion",
-            "desnutrición aguda",
-            "desnutrición crónica",
+            "desnutriciï¿½n aguda",
+            "desnutriciï¿½n crï¿½nica",
             "food and nutrition"
         ]
     },
@@ -575,7 +577,6 @@ class query_builder
                 "?" + api_parameters.filter +
                 "range=" + api_parameters.limit + "&" +
                 "sort=date";
-        console.log(url);
         return url;
     }
 
@@ -586,13 +587,10 @@ class query_builder
         api_parameters.endpoint = "action/package_search";
         api_parameters.limit = config.number_items;
         api_parameters.filter = "";
-
         var country_filter = "";
         var theme_filter = "";
-
         if (this.country_iso3)
             country_filter = "+groups:" + this.country_iso3;
-
         if (this.theme) {
             theme_filter = "+tags:(";
             var theme_array = theme_table[this.theme].hdx_tag;
@@ -612,11 +610,9 @@ class query_builder
             api_parameters.filter = "q=" + theme_filter;
         if ((this.theme) && (this.country_iso3))
             api_parameters.filter = "q=" + country_filter + "%20AND" + theme_filter;
-
         var url = api_parameters.base_url + api_parameters.endpoint +
                 "?" + api_parameters.filter + "&" +
                 "rows=" + api_parameters.limit;
-
         return url;
     }
 
@@ -627,6 +623,7 @@ class query_builder
         api_parameters.appname = "api-agg-demo";
         api_parameters.limit = config.number_items;
         api_parameters.include = "fields[include][]=body&fields[include][]=date.created&fields[include][]=source&fields[include][]=file&fields[include][]=url_alias";
+        api_parameters.sort = "date:desc"
         /* Build the filters */
         api_parameters.country_iso3 = this.country_iso3;
         if (this.theme)
@@ -653,6 +650,7 @@ class query_builder
                 "?appname=" + api_parameters.appname +
                 "&" + api_parameters.include +
                 "&limit=" + api_parameters.limit +
+                "&sort=" + api_parameters.sort +
                 api_parameters.filter;
         return url;
     }
@@ -667,54 +665,48 @@ function refresh_page(element_clicked) {
     else
         theme = null;
     country_iso3 = getUrlVars()["country"];
-
     /* Plot the title */
     title_block = document.getElementById("main_title");
-    title = country_table[country_iso3].fullname;
+    if (country_iso3)
+        title = country_table[country_iso3].fullname;
+    else
+        title = "All Countries";
     if (theme)
         title += " - " + element_clicked.innerText;
     title_block.innerText = title;
-
     /* Create the generic query */
 
     query_object = new query_builder(country_iso3, theme /*theme*/);
-
     /* List of countries */
     call_url = "https://vocabulary.unocha.org/json/beta-v3/countries.json";
     const element_countries = "countries";
     const element_countries_more = null;
     sendRequest(call_url, null, element_countries, element_countries_more, plotCountryMenu);
-
     /** Reliefweb - All reports */
     call_url = query_object.reliefweb_allreports_url;
     const element_all_reports = "latest-reports";
     const element_all_reports_more = "latest-reports-link";
     sendRequest(call_url, "All Reports", element_all_reports, element_all_reports_more, plotRWReports);
-
     /** Reliefweb - Sitaution reports **/
     call_url = query_object.reliefweb_sitreps_url;
     const element_sitreps = "latest-sitreps";
     const element_sitreps_more = "latest-sitreps-link";
     sendRequest(call_url, "All Situation Reports", element_sitreps, element_sitreps_more, plotRWReports);
-
     /** HDX Datasets **/
     call_url = query_object.hdx_datasets_url;
     const element_datasets = "hdx-datasets";
     const element_datasets_more = "hdx-datasets-link";
     sendRequest(call_url, "Latests HDX Datasets", element_datasets, element_datasets_more, plotHDXDatasets);
-
     /** HRinfo Events **/
     call_url = query_object.hrinfo_events_url;
     const element_events = "hrinfo-events";
     const element_events_more = "hrinfo-events-link";
     sendRequest(call_url, "Next HRinfo events", element_events, element_events_more, plotHRinfoEvents);
-
     /* Reliefweb figures */
     call_url = "https://raw.githubusercontent.com/reliefweb/crisis-app-data/v2/edition/hdx/main.json";
     const element_figures = "reliefweb-figures";
     const element_figures_more = "reliefweb-figures-link";
     sendRequest(call_url, "Latest Reliefweb Figures", element_figures, element_figures_more, plotRWFigures);
-
 }
 
 /* API CALLS */
@@ -731,26 +723,6 @@ function sendRequest(api_url, title, element, element_link, callback) {
         callback(data, api_url, title, element, element_link);
     };
     request.send();
-}
-
-/* DISPLAYING THE DATA */
-
-function plotHeader(element, title) {
-    display_area = document.getElementById(element);
-    // clean display area
-    while (display_area.firstChild)
-        display_area.removeChild(display_area.firstChild);
-    const h2 = document.createElement('h2');
-    h2.innerText = title;
-    display_area.appendChild(h2);
-}
-
-function plotFooter(element, link) {
-    display_area = document.getElementById(element);
-    reports_more = document.createElement('a');
-    reports_more.setAttribute('href', link);
-    reports_more.innerText = "View More";
-    display_area.appendChild(reports_more);
 }
 
 class plotable_object
@@ -796,12 +768,14 @@ class plotable_object
         this.source = report.fields.source[0].shortname;
         // TODO: only first source
         if (report.fields.file)
-            this.image = report.fields.file[0].preview["url-thumb"];
+            this.image = report.fields.file[0].preview["url-small"];
     }
 
     normalize_country(country) {
-        this.link = "?country=" + country.iso3.toLowerCase();
-        this.title = country.label["english-short"];
+        if (country.iso3) {
+            this.link = "?country=" + country.iso3.toLowerCase();
+            this.title = country.label["english-short"];
+        }
     }
 
     normalize_hdx_dataset(dataset)
@@ -823,7 +797,7 @@ class plotable_object
         // TODO: only first source
     }
 
-    normalize_rw_figure(figure)
+    normalize_reliefweb_figure(figure)
     {
         this.link = figure.url;
         this.title = figure.name;
@@ -853,7 +827,6 @@ class plotable_object
         source_span.textContent = this.source;
         area.appendChild(link);
         link.appendChild(card);
-
         card.appendChild(h1);
         card.appendChild(div);
         if (this.image) {
@@ -869,80 +842,58 @@ class plotable_object
     }
 }
 
-function plotHRinfoEvents(data, api_url, title, element) {
-    plotHeader(element, title);
-    data = data.data;
-    data.forEach(event => {
-        plot_event = new plotable_object();
-        plot_event.normalize_hrinfo_event(event);
-        plot_event.plot(element);
+class resultset {
+    constructor(data, title, url) {
+        this.title = title;
+        this.more_url = url;
+        this.original_data = data;
+        this.data = [];
     }
-    );
-    plotFooter(element, api_url);
-}
 
-function plotCountryMenu(data, api_url, title, element) {
-    plotHeader(element, title);
-    data = data.data;
-    data.forEach(country => {
-        if (country.iso3)
-        {
-            country_iso3 = country.iso3.toLowerCase();
-
-            /* Populate the country table */
-            /* TODO: Created manually
-             * As the rest of the "blocks" have to wait to create the country_table element, if it is asynchronous it doesn't work properly
-             */
-            /*
-             country_table[country_iso3] = {
-             "hrinfo_id": country.hrinfo_id,
-             "fullname": country.label.default,
-             "shortname": country.label["english-short"]
-             };
-             */
-
-            /* Plot the menu */
-            plot_event = new plotable_object();
-            plot_event.normalize_country(country);
-            plot_event.plot(element);
+    normalize_countries() {
+        // it is the only one not affected by number of items limit
+        this.original_data = this.original_data.data;
+        for (var i = 0; i < this.original_data.length; i++) {
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_country(item_original);
+            if (item.title !== "")
+                this.data.push(item);
         }
-    });
-}
-
-function plotHDXDatasets(data, api_url, title, element) {
-    plotHeader(element, title);
-    data = data.result.results;
-    data.forEach(dataset => {
-        plot_dataset = new plotable_object();
-        plot_dataset.normalize_hdx_dataset(dataset);
-        plot_dataset.plot(element);
     }
-    );
-    plotFooter(element, api_url);
-}
 
-function plotRWReports(data, api_url, title, element) {
+    normalize_reliefweb_reports() {
+        this.original_data = this.original_data.data;
+        for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_reliefweb_report(item_original);
+            this.data.push(item);
+        }
 
-    plotHeader(element, title);
-    data = data.data;
-    data.forEach(report => {
-        plot_report = new plotable_object();
-        plot_report.normalize_reliefweb_report(report);
-        plot_report.plot(element);
     }
-    );
-    plotFooter(element, api_url);
-}
+    normalize_hdx_datasets() {
+        this.original_data = this.original_data.result.results;
+        for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_hdx_dataset(item_original);
+            this.data.push(item);
+        }
+    }
 
-function plotRWFigures(data, api_url, title, element) {
+    normalize_hrinfo_events() {
+        this.original_data = this.original_data.data;
+        for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_hrinfo_event(item_original);
+            this.data.push(item);
+        }
+    }
 
-    var found = data.find(function (element) {
-        return (element.iso3.toLowerCase() === country_iso3);
-    });
-    if (found) {
-        data = found.figures;
+    normalize_reliefweb_figures() {
 
-        // order figures by date
         function compare(a, b) {
             if (a.date < b.date) {
                 return 1;
@@ -952,19 +903,96 @@ function plotRWFigures(data, api_url, title, element) {
             }
             return 0;
         }
-        data.sort(compare);
-        console.log(data);
-        plotHeader(element, title);
-        for (i = 0; i < config.number_items; i++) {
-            figure = data[i];
-            plot_dataset = new plotable_object();
-            plot_dataset.normalize_rw_figure(figure);
-            plot_dataset.plot(element);
+
+        var found = this.original_data.find(function (element) {
+            return (element.iso3.toLowerCase() === country_iso3);
+        });
+        if (found) {
+            var country_figures = found.figures;
+            // order figures by date
+            country_figures.sort(compare);
+            for (var i = 0; i < config.number_items && i < country_figures.length; i++) {
+                var item_original = country_figures[i];
+                var item = new plotable_object();
+                item.normalize_reliefweb_figure(item_original);
+                this.data.push(item);
+            }
         }
-        ;
-        plotFooter(element, api_url);
     }
+
+    plot_no_results(element)
+    {
+        var area = document.getElementById(element);
+        const p = document.createElement('p');
+        p.innerText = "No results found";
+        area.appendChild(p);
+    }
+
+    plot_header(element) {
+        var display_area = document.getElementById(element);
+        // clean display area
+        while (display_area.firstChild)
+            display_area.removeChild(display_area.firstChild);
+        const h2 = document.createElement('h2');
+        h2.innerText = this.title;
+        display_area.appendChild(h2);
+    }
+
+    plot_footer(element, footer_text) {
+        var display_area = document.getElementById(element);
+        var more_link = document.createElement('a');
+        more_link.setAttribute('href', this.more_url);
+        more_link.innerText = footer_text;
+        display_area.appendChild(more_link);
+    }
+
+    plot_block(element, footer_text) {
+        this.plot_header(element);
+        if (this.data.length > 0) {
+            for (var i = 0; i < this.data.length; i++) {
+                var plotable_item = this.data[i];
+                plotable_item.plot(element);
+            }
+            this.plot_footer(element, footer_text);
+        } else {
+            this.plot_no_results(element);
+        }
+    }
+
 }
+
+
+function plotHRinfoEvents(data, api_url, title, element) {
+    results = new resultset(data, title, api_url);
+    results.normalize_hrinfo_events();
+    results.plot_block(element, "HRINFO API Query");
+}
+
+function plotCountryMenu(data, api_url, title, element) {
+    results = new resultset(data, title, api_url);
+    results.normalize_countries();
+    results.plot_block(element, null);
+}
+
+function plotHDXDatasets(data, api_url, title, element) {
+    results = new resultset(data, title, api_url);
+    results.normalize_hdx_datasets();
+    results.plot_block(element, "HDX API Query");
+}
+
+function plotRWReports(data, api_url, title, element) {
+    results = new resultset(data, title, api_url);
+    results.normalize_reliefweb_reports();
+    results.plot_block(element, "RW Reports Query");
+}
+
+function plotRWFigures(data, api_url, title, element) {
+    results = new resultset(data, title, api_url);
+    results.normalize_reliefweb_figures();
+    results.plot_block(element, "RW Figures dataset");
+}
+
+
 
 /* MAIN CALL */
 
