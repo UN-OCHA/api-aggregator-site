@@ -1,11 +1,11 @@
 /*
  * TODO: Put theme in the URL
  * TODO: Cluster menu created automatically based on RW taxonomy
- * Get blocks for : Headlines, HRinfo events, HPC data, HDX datasets, FTS funding by sector, key figures, DSR, HPC?? , RW Figures, CBPF API
+ * Get blocks for : Headlines, , HPC data, , FTS funding by sector, , DSR, HPC?? , , CBPF API
  * Create breadcrumb
- * TODO: DATES FORMATTING
+ * TODO: Allow multiple links (for HDX datasets)
  *  
- *  
+ *  ba4cbf9286fd3e0b4eff4fe90bffc9fe8d49722b
  */
 var config = {};
 config.number_items = 3;
@@ -20,11 +20,36 @@ function getUrlVars() {
     return vars;
 }
 
+function formatNumber(num) {
+    var suffix = "";
+
+    if (num > 1000 && num < 1000000) {
+        num = num / 1000;
+        num = Number.parseFloat(num).toFixed(2);
+        suffix = " K";
+    } else if (num => 1000000) {
+        num = num / 1000000;
+        num = Number.parseFloat(num).toFixed(2);
+        suffix = " M";
+    }
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + suffix;
+}
+
+function formatDate(date) {
+    var options = {year: 'numeric', month: 'short', day: 'numeric'};
+    var date_object = new Date(date);
+    if (date_object.getTime()) {
+        new_date = date_object.toLocaleDateString("en-US", options);
+        return new_date;
+    } else
+        return date;
+}
+
 /* mapping tables */
 const country_table = {
     // TODO: To fix HRINFO ID
     abw: {hrinfo_id: "193", fullname: "Aruba", shortname: "Aruba"},
-    afg: {hrinfo_id: "82", fullname: "Afghanistan", shortname: "Afghanistan", hrinfo_op: true}, // right HRINFO
+    afg: {hrinfo_id: "82", fullname: "Afghanistan", shortname: "Afghanistan", hrinfo_op: true, cbpf: "AFG23"},
     ago: {hrinfo_id: "187", fullname: "Angola", shortname: "Angola"},
     aia: {hrinfo_id: "188", fullname: "Anguilla", shortname: "Anguilla"},
     ala: {hrinfo_id: "182", fullname: "�land Islands", shortname: "Aland Islands"},
@@ -534,13 +559,15 @@ class query_builder
         this.theme = null;
         if (theme)
             this.theme = theme.toLowerCase();
-        this.hrinfo_events_url = this.createHRinfoEventsQuery();
-        this.hdx_datasets_url = this.createHDXDatasetQuery();
-        this.reliefweb_allreports_url = this.createRWGenericReportsQuery();
-        this.reliefweb_sitreps_url = this.createRWGenericReportsQuery(10);
+        this.hrinfo_events_url = this.create_hrinfo_events_query();
+        this.hdx_datasets_url = this.create_hdx_datasets_query();
+        this.reliefweb_allreports_url = this.create_reliefweb_reports_query();
+        this.reliefweb_sitreps_url = this.create_reliefweb_reports_query(10);
+        this.fts_plans_url = this.create_fts_plans_query(10);
+        this.cbpf_funds_url = this.create_cbpf_funds_query();
     }
 
-    createHRinfoEventsQuery() {
+    create_hrinfo_events_query() {
 // TODO: Get the first events in the future from today
 // TODO: Filter by global cluster - theme , with another conversion table
         var api_parameters = {};
@@ -580,7 +607,27 @@ class query_builder
         return url;
     }
 
-    createHDXDatasetQuery() {
+    create_fts_plans_query() {
+        // SAMPLE: https://api.hpc.tools/v1/public/plan/country/afg
+        var api_parameters = {};
+        api_parameters.base_url = "https://api.hpc.tools/v1/public/";
+        api_parameters.endpoint = "plan/country/";
+        var url = api_parameters.base_url + api_parameters.endpoint + this.country_iso3;
+        return url;
+    }
+
+    create_cbpf_funds_query() {
+        // SAMPLE: https://cbpfapi.unocha.org/vo1/odata/ProjectSummary?poolfundAbbrv=DRC24
+        var api_parameters = {};
+        api_parameters.base_url = "https://cbpfapi.unocha.org/vo1/odata/";
+        api_parameters.endpoint = "ProjectSummary";
+        var url = api_parameters.base_url +
+                api_parameters.endpoint +
+                "?poolfundAbbrv=" + country_table[this.country_iso3].cbpf;
+        return url;
+    }
+
+    create_hdx_datasets_query() {
         // SAMPLE: https://data.humdata.org/api/3/action/package_search?q=+tags:(food security OR hxl)%20AND%20+groups:nga&rows=3   
         var api_parameters = {};
         api_parameters.base_url = "https://data.humdata.org/api/3/";
@@ -616,14 +663,14 @@ class query_builder
         return url;
     }
 
-    createRWGenericReportsQuery(format) {
+    create_reliefweb_reports_query(format) {
         var api_parameters = {};
         api_parameters.base_url = "https://api.reliefweb.int/v1/";
         api_parameters.endpoint = "reports";
         api_parameters.appname = "api-agg-demo";
         api_parameters.limit = config.number_items;
         api_parameters.include = "fields[include][]=body&fields[include][]=date.created&fields[include][]=source&fields[include][]=file&fields[include][]=url_alias";
-        api_parameters.sort = "date:desc"
+        api_parameters.sort = "date:desc";
         /* Build the filters */
         api_parameters.country_iso3 = this.country_iso3;
         if (this.theme)
@@ -680,38 +727,44 @@ function refresh_page(element_clicked) {
     /* List of countries */
     call_url = "https://vocabulary.unocha.org/json/beta-v3/countries.json";
     const element_countries = "countries";
-    const element_countries_more = null;
-    sendRequest(call_url, null, element_countries, element_countries_more, plotCountryMenu);
+    sendRequest(call_url, null, null, element_countries, plot_country_menu);
+    // TODO: Remove title from the plot_XXX functions
+
+    var display_block_id = null;
     /** Reliefweb - All reports */
     call_url = query_object.reliefweb_allreports_url;
-    const element_all_reports = "latest-reports";
-    const element_all_reports_more = "latest-reports-link";
-    sendRequest(call_url, "All Reports", element_all_reports, element_all_reports_more, plotRWReports);
+    display_block_id = "latest-reports";
+    sendRequest(call_url, "All Reports", "RW API All Reports", display_block_id, plot_reliefweb_reports);
     /** Reliefweb - Sitaution reports **/
     call_url = query_object.reliefweb_sitreps_url;
-    const element_sitreps = "latest-sitreps";
-    const element_sitreps_more = "latest-sitreps-link";
-    sendRequest(call_url, "All Situation Reports", element_sitreps, element_sitreps_more, plotRWReports);
+    display_block_id = "latest-sitreps";
+    sendRequest(call_url, "All Situation Reports", "RW API SitReps", display_block_id, plot_reliefweb_reports);
     /** HDX Datasets **/
     call_url = query_object.hdx_datasets_url;
-    const element_datasets = "hdx-datasets";
-    const element_datasets_more = "hdx-datasets-link";
-    sendRequest(call_url, "Latests HDX Datasets", element_datasets, element_datasets_more, plotHDXDatasets);
+    display_block_id = "hdx-datasets";
+    sendRequest(call_url, "Latests HDX Datasets", "HDX Datasets API", display_block_id, plot_hdx_datasets);
     /** HRinfo Events **/
     call_url = query_object.hrinfo_events_url;
-    const element_events = "hrinfo-events";
-    const element_events_more = "hrinfo-events-link";
-    sendRequest(call_url, "Next HRinfo events", element_events, element_events_more, plotHRinfoEvents);
+    display_block_id = "hrinfo-events";
+    sendRequest(call_url, "Next HRinfo events", "HRINFO Events API", display_block_id, plot_hrinfo_events);
     /* Reliefweb figures */
     call_url = "https://raw.githubusercontent.com/reliefweb/crisis-app-data/v2/edition/hdx/main.json";
-    const element_figures = "reliefweb-figures";
-    const element_figures_more = "reliefweb-figures-link";
-    sendRequest(call_url, "Latest Reliefweb Figures", element_figures, element_figures_more, plotRWFigures);
+    display_block_id = "reliefweb-figures";
+    sendRequest(call_url, "Latest Reliefweb Figures", "RW Figures Dataset", display_block_id, plot_reliefweb_figures);
+    /* FTS Plans */
+    call_url = query_object.fts_plans_url;
+    display_block_id = "fts-plans";
+    sendRequest(call_url, "FTS Plans", "FTS Plans API", display_block_id, plot_fts_plans);
+    /* CBPF FUND */
+    call_url = query_object.cbpf_funds_url;
+    display_block_id = "cbpf-funds";
+    sendRequest(call_url, "CBPF Funds - draft", "CBPF Funds API", display_block_id, plot_cbpf_funds);
+
 }
 
 /* API CALLS */
 
-function sendRequest(api_url, title, element, element_link, callback) {
+function sendRequest(api_url, title, more_text, element, callback) {
 
     var request = new XMLHttpRequest();
     request.open('GET', api_url, true);
@@ -720,7 +773,7 @@ function sendRequest(api_url, title, element, element_link, callback) {
         if (request.status >= 200 && request.status < 400) {
             data = JSON.parse(this.response);
         }
-        callback(data, api_url, title, element, element_link);
+        callback(data, api_url, title, more_text, element);
     };
     request.send();
 }
@@ -745,7 +798,7 @@ class plotable_object
             this.short_description = `${this.short_description}...`;
         }
 
-        this.date = event.date[0].value + " - " + event.date[0].value2;
+        this.date = formatDate(event.date[0].value) + " - " + formatDate(event.date[0].value2);
         // TODO: Only first date of the event
 
         if (event.organizations[0])
@@ -753,6 +806,21 @@ class plotable_object
         else
             this.source = "";
         this.link = event.url;
+    }
+
+    normalize_fts_plan(plan) {
+        this.title = plan.planVersion.name;
+        this.value = formatNumber(plan.revisedRequirements) + " USD";
+        this.date = formatDate(plan.planVersion.endDate);
+        this.link = "https://fts.unocha.org/appeals/" + plan.id + "/summary";
+    }
+
+    normalize_cbpf_fund(fund) {
+        this.title = fund.PooledFundName;
+        this.value = formatNumber(fund.PaidAmtLocal) + " " + fund.PaidAmtLocalCurrency +
+                " of " + formatNumber(fund.PledgeAmtLocal) + " " + fund.PledgeAmtLocalCurrency;
+        this.date = fund.AllocationYear;
+        this.link = "https://pfbi.unocha.org/allocations-overview.html";
     }
 
     normalize_reliefweb_report(report) {
@@ -764,17 +832,18 @@ class plotable_object
             this.short_description = `${this.short_description}...`;
         }
 
-        this.date = report.fields.date.created;
+        this.date = formatDate(report.fields.date.created);
         this.source = report.fields.source[0].shortname;
         // TODO: only first source
-        if (report.fields.file)
+        if (report.fields.file && report.fields.file.length > 0 && report.fields.file[0].preview) {
             this.image = report.fields.file[0].preview["url-small"];
+        }
     }
 
     normalize_country(country) {
         if (country.iso3) {
             this.link = "?country=" + country.iso3.toLowerCase();
-            this.title = country.label["english-short"]; 
+            this.title = country.label["english-short"];
         }
     }
 
@@ -792,7 +861,7 @@ class plotable_object
             this.short_description = dataset.notes.substring(0, 300);
             this.short_description = `${this.short_description}...`;
         }
-        this.date = dataset.dataset_date;
+        this.date = formatDate(dataset.dataset_date);
         this.source = dataset.organization.name;
         // TODO: only first source
     }
@@ -801,8 +870,8 @@ class plotable_object
     {
         this.link = figure.url;
         this.title = figure.name;
-        this.value = figure.value;
-        this.date = figure.date;
+        this.value = formatNumber(figure.value);
+        this.date = formatDate(figure.date);
         this.source = figure.source;
     }
 
@@ -843,9 +912,11 @@ class plotable_object
 }
 
 class resultset {
-    constructor(data, title, url) {
+    constructor(data, title, more_text, url) {
         this.title = title;
         this.more_url = url;
+        this.more_text = more_text;
+
         this.original_data = data;
         this.data = [];
     }
@@ -862,6 +933,55 @@ class resultset {
         }
     }
 
+    normalize_fts_plans() {
+        this.original_data = this.original_data.data;
+        // not limited to the number_items limit
+
+        function compare(a, b) {
+            if (a.planVersion.endDate < b.planVersion.endDate) {
+                return 1;
+            }
+            if (a.planVersion.endDate > b.planVersion.endDate) {
+                return -1;
+            }
+            return 0;
+        }
+        this.original_data.sort(compare);
+
+        for (var i = 0; i < 1 && i < this.original_data.length; i++) {
+            // TODO: Only add plan if endDate is more than today -- and remove the only "1" from the loop
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_fts_plan(item_original);
+            this.data.push(item);
+        }
+    }
+
+    normalize_cbpf_funds() {
+        this.original_data = this.original_data.value;
+        // not limited to the number_items limit
+
+        // TODO: These dates don't work
+        // Plan structure changes with years??
+        function compare(a, b) {
+            if (a.AllocationYear > b.AllocationYear) {
+                return 1;
+            }
+            if (a.AllocationYear < b.AllocationYear) {
+                return -1;
+            }
+            return 0;
+        }
+        this.original_data.sort(compare);
+        for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
+            // TODO: Displaying all the data
+            var item_original = this.original_data[i];
+            var item = new plotable_object();
+            item.normalize_cbpf_fund(item_original);
+            this.data.push(item);
+        }
+    }
+
     normalize_reliefweb_reports() {
         this.original_data = this.original_data.data;
         for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
@@ -870,8 +990,8 @@ class resultset {
             item.normalize_reliefweb_report(item_original);
             this.data.push(item);
         }
-
     }
+
     normalize_hdx_datasets() {
         this.original_data = this.original_data.result.results;
         for (var i = 0; i < config.number_items && i < this.original_data.length; i++) {
@@ -938,58 +1058,69 @@ class resultset {
         display_area.appendChild(h2);
     }
 
-    plot_footer(element, footer_text) {
+    plot_footer(element) {
         var display_area = document.getElementById(element);
         var more_link = document.createElement('a');
         more_link.setAttribute('href', this.more_url);
-        more_link.innerText = footer_text;
+        more_link.innerText = this.more_text;
         display_area.appendChild(more_link);
     }
 
-    plot_block(element, footer_text) {
+    plot_block(element) {
         this.plot_header(element);
         if (this.data.length > 0) {
             for (var i = 0; i < this.data.length; i++) {
                 var plotable_item = this.data[i];
                 plotable_item.plot(element);
             }
-            this.plot_footer(element, footer_text);
+            this.plot_footer(element);
         } else {
             this.plot_no_results(element);
         }
     }
-
 }
 
-
-function plotHRinfoEvents(data, api_url, title, element) {
-    results = new resultset(data, title, api_url);
+function plot_hrinfo_events(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
     results.normalize_hrinfo_events();
-    results.plot_block(element, "HRINFO API Query");
+    results.plot_block(element);
 }
 
-function plotCountryMenu(data, api_url, title, element) {
-    results = new resultset(data, title, api_url);
+function plot_fts_plans(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
+    results.normalize_fts_plans();
+    results.plot_block(element);
+}
+
+function plot_cbpf_funds(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
+    results.normalize_cbpf_funds();
+    results.plot_block(element);
+}
+
+
+function plot_country_menu(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
     results.normalize_countries();
-    results.plot_block(element, null);
+    results.plot_block(element);
 }
 
-function plotHDXDatasets(data, api_url, title, element) {
-    results = new resultset(data, title, api_url);
+function plot_hdx_datasets(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
     results.normalize_hdx_datasets();
-    results.plot_block(element, "HDX API Query");
+    results.plot_block(element);
 }
 
-function plotRWReports(data, api_url, title, element) {
-    results = new resultset(data, title, api_url);
+function plot_reliefweb_reports(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
     results.normalize_reliefweb_reports();
-    results.plot_block(element, "RW Reports Query");
+    results.plot_block(element);
 }
 
-function plotRWFigures(data, api_url, title, element) {
-    results = new resultset(data, title, api_url);
+function plot_reliefweb_figures(data, api_url, title, more_text, element) {
+    results = new resultset(data, title, more_text, api_url);
     results.normalize_reliefweb_figures();
-    results.plot_block(element, "RW Figures dataset");
+    results.plot_block(element);
 }
 
 
